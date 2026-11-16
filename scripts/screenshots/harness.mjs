@@ -1,5 +1,6 @@
 // Shared by the screenshot scripts: theme variables, the <ha-card> stand-in, a fixed clock and the render loop.
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { LATENCY, mockHass, NOW } from "./mock.mjs";
@@ -140,6 +141,8 @@ export const writeIfChanged = async (page, path, png) => {
     );
     if (same) return false;
   }
+  // A new repository has no screenshots/ yet.
+  mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, png);
   return true;
 };

@@ -3,9 +3,9 @@
 // The CSS animations are paused and stepped frame by frame over an 8 s cycle (every animation of the cards lasts a
 // divisor of it), so every GIF loops cleanly at its real speed whatever the machine's speed.
 import { execFileSync } from "node:child_process";
-import { copyFileSync, existsSync, mkdtempSync, rmSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { cardClip, freeze, launch, mountCard, openPage, PERIOD, root } from "./harness.mjs";
 import { GIFS as NAMES } from "./list.mjs";
 
@@ -30,7 +30,10 @@ const encode = (dir, out, width) => {
   ]);
   const target = `${root}${out}`;
   const same = existsSync(target) && decodedFrames(target) === decodedFrames(gif);
-  if (!same) copyFileSync(gif, target);
+  if (!same) {
+    mkdirSync(dirname(target), { recursive: true });
+    copyFileSync(gif, target);
+  }
   console.log(`${out}${same ? " (unchanged)" : ""}`);
 };
 
