@@ -1,0 +1,27 @@
+{
+  "name": "ha-cloud-card",
+  "version": "1.0.0",
+  "description": "Home Assistant Cloud (Nabu Casa) and remote access cards for Home Assistant, under an animated illustrated banner.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juju35/ha-cloud-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juju35/ha-cloud-card/issues"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs && node --check dist/cloud-card.js",
+    "test": "node --test test/*.test.mjs",
+    "screenshots": "npm run build && node scripts/screenshots/stills.mjs && node scripts/screenshots/animations.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@mdi/js": "^7.4.47",
+    "acorn": "^8.19.0",
+    "css-tree": "^3.2.1",
+    "playwright": "^1.65.0"
+  }
+}
