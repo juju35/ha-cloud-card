@@ -1,0 +1,13 @@
+# Changelog
+
+## 1.0.0 - 2026-11-16
+
+### Features
+- **Cloud Card** (`custom:cloud-card`): Home Assistant Cloud (Nabu Casa) and remote access at a glance, under an animated illustrated banner: a house linked to the cloud, linked to a phone, with dots flowing along the links, drifting clouds and packets running along the bottom strip. When the cloud connection drops, the check turns into a red cross and the flow stops. Night sky (stars, moon) after sunset or with the dark theme, or forced with `illustration_theme`; `illustration: false` gives a classic header. `prefers-reduced-motion` is honoured.
+- Status chips: the cloud connection (connected, connecting, disconnected, subscription expired), the number of services to check, and the subscription's renewal date (administrators).
+- Three indicators: the **latency** of the remote access, measured from the browser through the remote URL (Home Assistant exposes none; `latency: false` turns the measure off), the **availability of the remote access** over up to 30 days, computed from the recorder history of the cloud's Remote UI sensor (`uptime_days`), and the **days left on the remote certificate**, with a ring.
+- Six service tiles, neutral while healthy and coloured only on an issue: Remote access, Cloud backup (last backup stored in the cloud and its size), Alexa and Google Assistant (linked, exposed entities), Webhooks (cloudhooks) and Cloud TTS (default voice); their order and selection with `services`. A tap opens the service's details in a popup at the top of the card, closed by a click elsewhere, Escape, or when the card leaves the page.
+- Tinted buttons: **Sync voice assistants** (Alexa and Google Assistant, administrators) and **Open remote URL**; `hide_url` masks the remote URL in the card.
+- **Cloud Mini Card** (`custom:cloud-mini-card`): the status, latency, certificate and what needs a look (remote access down for how long, services to check) on two lines, with a detail button that unfolds the full card and folds back on a click elsewhere.
+- Users who are not administrators see what Home Assistant gives them (cloud status, Remote UI history, backup sensors); the administrator-only commands are not called for them.
+- Visual editors for both cards, the mini card's with the full card's options; 22 languages, with only English in the bundle and each other language loaded on demand.
