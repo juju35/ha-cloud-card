@@ -25,7 +25,7 @@ The cards read the [Home Assistant Cloud integration](https://www.home-assistant
 
 - Two cards: a full **Cloud Card** and a compact **Cloud Mini Card**, of type `custom:cloud-card` and `custom:cloud-mini-card`
 - The illustration is the 90 px header: sky, a house linked to the cloud (its padlock in the state colour) and to a phone away by an encrypted tunnel, a latency pill above, and a 10 px network strip at the bottom. Connected, green dots flow along the tunnel and packets run along the strip; connecting, everything turns amber and slows down; disconnected, the tunnel breaks with a red cross, the phone goes dark and the strip turns grey with red dashes. The round header icon always takes the state colour (blue connected, amber connecting, red disconnected, grey signed out)
-- **Night mode** of the illustration: midnight-blue sky, stars and moon, lit windows; it follows the sun (`sun.sun`), else the dark theme of Home Assistant, or is forced with `illustration_theme`
+- **Night mode** of the illustration: midnight-blue sky, stars and moon, lit windows; it shows when the sun (`sun.sun`) is below the horizon or the theme of Home Assistant is dark, or is forced with `illustration_theme`
 - Status chips: the cloud connection (**Connected**, **Connecting**, **Disconnected**, **Subscription expired**), the number of services to check, and the subscription's renewal date on the right
 - Three indicators: the **latency** of the remote access, the **availability** of the remote access over 30 days, and the **days left on the remote certificate** with a ring (amber under 14 days, red under 3)
 - Six service tiles, the size of Home Assistant's Tile card, neutral while healthy and coloured only when something needs a look: **Remote access**, **Cloud backup** (last backup stored in the cloud, its size), **Alexa** and **Google Assistant** (linked, exposed entities), **Webhooks** (cloudhooks), **Cloud TTS** (default voice)
@@ -132,7 +132,7 @@ zoom: true
 | `title` | both | « Home Assistant Cloud » (mini: « Cloud ») | Card title |
 | `remote_entity` | both | Discovered | The cloud integration's **Remote UI** binary sensor, used for the availability and the « down for » durations. Found in the entity registry (platform `cloud`, whatever its name), else `binary_sensor.remote_ui` |
 | `illustration` | both | `true` | The animated illustration as header; `false` for a classic header with a round icon |
-| `illustration_theme` | both | `auto` | `auto` (night when `sun.sun` is below the horizon, else with the dark theme of Home Assistant), `day` or `night` |
+| `illustration_theme` | both | `auto` | `auto` (night when `sun.sun` is below the horizon or the theme of Home Assistant is dark), `day` or `night` |
 | `uptime_days` | both | `30` | Period of the availability indicator, 1 to 30 days (shorter when the recorder keeps less history) |
 | `show_indicators` | both | `true` | The latency, availability and certificate indicators |
 | `show_services` | both | `true` | The service tiles |
@@ -176,7 +176,7 @@ Night:
 | <img src="https://raw.githubusercontent.com/juju35/ha-cloud-card/main/screenshots/card.png" alt="cloud card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-cloud-card/main/screenshots/card-dark.png" alt="cloud card, dark theme" width="400"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-cloud-card/main/screenshots/card-disconnected.png" alt="cloud card, disconnected" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-cloud-card/main/screenshots/card-disconnected-dark.png" alt="cloud card, disconnected, dark theme" width="400"> |
 
-Night illustration (`illustration_theme: night`, or automatic after sunset):
+Night illustration (`illustration_theme: night`, or automatic after sunset or with a dark theme):
 
 | Light | Dark |
 |---|---|

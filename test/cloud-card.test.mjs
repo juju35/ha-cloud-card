@@ -184,6 +184,20 @@ test("an administrator's card reads the status, subscription, backups, exposed e
   assert.ok(html.includes('class="strip ok"') && html.includes('class="dots ok"') && html.includes(">18 ms</text>"));
 });
 
+test("night picture: sun below the horizon or dark theme, unless forced by illustration_theme", async () => {
+  const up = { "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } };
+  const down = { "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } };
+  const night = async (config, themes, sun) => {
+    const base = mockHass({});
+    return (await card(cc.CloudCard, config, { hass: { themes, states: { ...base.states, ...sun } } }))._night();
+  };
+  assert.equal(await night({}, { darkMode: false }, up), false);
+  assert.equal(await night({}, { darkMode: true }, up), true, "dark theme while the sun is up");
+  assert.equal(await night({}, { darkMode: false }, down), true);
+  assert.equal(await night({ illustration_theme: "day" }, { darkMode: true }, down), false);
+  assert.equal(await night({ illustration_theme: "night" }, { darkMode: false }, up), true);
+});
+
 test("night banner: the moon's mask id is unique per card; connecting: amber, slower flow", async () => {
   const a = (await card(cc.CloudCard, { illustration_theme: "night" }))._render();
   const b = (await card(cc.CloudCard, { illustration_theme: "night" }))._render();

@@ -6,6 +6,7 @@
 - **Illustrated header**, aligned with the other cards: a 90 px banner on the full card and now on the **mini card** too, the title and status on the sky at the left, the scene on the right standing on a 10 px network strip (cyan packets on a navy cable, red dashes on grey when cut off; day and night variants).
 - New scene: a house linked to the cloud (padlock in the state colour) and to a phone away by an encrypted tunnel, with a latency pill. Connected: green, dots flowing; connecting: amber, slower flow; disconnected: the tunnel breaks with a red cross and the phone goes dark.
 - The round header icon always shows the state colour (blue connected, amber connecting, red disconnected, grey signed out), day and night, on the full and mini cards; SVG ids unique per card instance.
+- The banner switches to its night picture with the dark theme of Home Assistant too, even while the sun is up (`illustration_theme: auto`); `day` and `night` still force it.
 
 ## 1.0.0 - 2026-11-16
 

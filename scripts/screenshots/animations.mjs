@@ -38,10 +38,10 @@ const encode = (dir, out, width) => {
 };
 
 const GIFS = [
-  // Connected, day: dots flowing along the links, drifting clouds, packets running along the strip.
-  { name: "connected", config: { illustration_theme: "day" } },
+  // Connected (day in light, night in dark): dots flowing along the links, drifting clouds, packets running along the strip.
+  { name: "connected", config: {} },
   // Cut off: the red cross, the links greyed and still, the packets stopped; only the clouds drift.
-  { name: "disconnected", config: { illustration_theme: "day" }, variant: "disconnected" },
+  { name: "disconnected", config: {}, variant: "disconnected" },
   // Night: stars twinkling over the same flow.
   { name: "night", config: { illustration_theme: "night" } },
 ];

@@ -3216,15 +3216,12 @@ class CloudCard extends HTMLElement {
     }
   }
 
-  // Night illustration: forced by illustration_theme, else the sun below the horizon, else the dark theme.
+  // Night illustration: forced by illustration_theme, else when the sun is below the horizon or the theme is dark.
   _night() {
     const mode = this._config.illustration_theme;
     if (mode === "night") return true;
     if (mode === "day") return false;
-    const sun = this._hass?.states?.["sun.sun"]?.state;
-    if (sun === "below_horizon") return true;
-    if (sun === "above_horizon") return false;
-    return !!this._hass?.themes?.darkMode;
+    return this._hass?.states?.["sun.sun"]?.state === "below_horizon" || !!this._hass?.themes?.darkMode;
   }
 
   _status(m) {
