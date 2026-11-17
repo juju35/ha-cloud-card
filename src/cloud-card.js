@@ -134,7 +134,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI sensor",
     ed_illustration: "Illustrated banner",
     ed_illustration_theme: "Banner theme",
-    theme_auto: "Automatic",
+    theme_auto: "Automatic (sun or dark theme)",
     theme_day: "Day",
     theme_night: "Night",
     ed_uptime_days: "Uptime period (days)",
@@ -237,7 +237,7 @@ const STRINGS = {
     ed_remote_entity: "Capteur Remote UI",
     ed_illustration: "Bandeau illustré",
     ed_illustration_theme: "Thème du bandeau",
-    theme_auto: "Automatique",
+    theme_auto: "Automatique (soleil ou thème sombre)",
     theme_day: "Jour",
     theme_night: "Nuit",
     ed_uptime_days: "Période de disponibilité (jours)",
@@ -340,7 +340,7 @@ const STRINGS = {
     ed_remote_entity: "Remote-UI-Sensor",
     ed_illustration: "Illustriertes Banner",
     ed_illustration_theme: "Banner-Design",
-    theme_auto: "Automatisch",
+    theme_auto: "Automatisch (Sonne oder dunkles Design)",
     theme_day: "Tag",
     theme_night: "Nacht",
     ed_uptime_days: "Verfügbarkeitszeitraum (Tage)",
@@ -443,7 +443,7 @@ const STRINGS = {
     ed_remote_entity: "Sensor Remote UI",
     ed_illustration: "Cabecera ilustrada",
     ed_illustration_theme: "Tema de la cabecera",
-    theme_auto: "Automático",
+    theme_auto: "Automático (sol o tema oscuro)",
     theme_day: "Día",
     theme_night: "Noche",
     ed_uptime_days: "Periodo de disponibilidad (días)",
@@ -546,7 +546,7 @@ const STRINGS = {
     ed_remote_entity: "Сензор Remote UI",
     ed_illustration: "Илустровани банер",
     ed_illustration_theme: "Тема банера",
-    theme_auto: "Аутоматски",
+    theme_auto: "Аутоматски (сунце или тамна тема)",
     theme_day: "Дан",
     theme_night: "Ноћ",
     ed_uptime_days: "Период доступности (дани)",
@@ -649,7 +649,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrovani baner",
     ed_illustration_theme: "Tema banera",
-    theme_auto: "Automatski",
+    theme_auto: "Automatski (sunce ili tamna tema)",
     theme_day: "Dan",
     theme_night: "Noć",
     ed_uptime_days: "Period dostupnosti (dani)",
@@ -752,7 +752,7 @@ const STRINGS = {
     ed_remote_entity: "Sensore Remote UI",
     ed_illustration: "Intestazione illustrata",
     ed_illustration_theme: "Tema dell'intestazione",
-    theme_auto: "Automatico",
+    theme_auto: "Automatico (sole o tema scuro)",
     theme_day: "Giorno",
     theme_night: "Notte",
     ed_uptime_days: "Periodo di disponibilità (giorni)",
@@ -855,7 +855,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Geïllustreerde banner",
     ed_illustration_theme: "Thema van de banner",
-    theme_auto: "Automatisch",
+    theme_auto: "Automatisch (zon of donker thema)",
     theme_day: "Dag",
     theme_night: "Nacht",
     ed_uptime_days: "Beschikbaarheidsperiode (dagen)",
@@ -958,7 +958,7 @@ const STRINGS = {
     ed_remote_entity: "Sensor Remote UI",
     ed_illustration: "Faixa ilustrada",
     ed_illustration_theme: "Tema da faixa",
-    theme_auto: "Automático",
+    theme_auto: "Automático (sol ou tema escuro)",
     theme_day: "Dia",
     theme_night: "Noite",
     ed_uptime_days: "Período de disponibilidade (dias)",
@@ -1061,7 +1061,7 @@ const STRINGS = {
     ed_remote_entity: "Czujnik Remote UI",
     ed_illustration: "Ilustrowany baner",
     ed_illustration_theme: "Motyw banera",
-    theme_auto: "Automatyczny",
+    theme_auto: "Automatycznie (słońce lub ciemny motyw)",
     theme_day: "Dzień",
     theme_night: "Noc",
     ed_uptime_days: "Okres dostępności (dni)",
@@ -1164,7 +1164,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Banner ilustrat",
     ed_illustration_theme: "Tema bannerului",
-    theme_auto: "Automată",
+    theme_auto: "Automat (soare sau temă întunecată)",
     theme_day: "Zi",
     theme_night: "Noapte",
     ed_uptime_days: "Perioada de disponibilitate (zile)",
@@ -1267,7 +1267,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Illustreret banner",
     ed_illustration_theme: "Bannertema",
-    theme_auto: "Automatisk",
+    theme_auto: "Automatisk (sol eller mørkt tema)",
     theme_day: "Dag",
     theme_night: "Nat",
     ed_uptime_days: "Oppetidsperiode (dage)",
@@ -1370,7 +1370,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Illustrerad banner",
     ed_illustration_theme: "Bannerns tema",
-    theme_auto: "Automatiskt",
+    theme_auto: "Automatiskt (sol eller mörkt tema)",
     theme_day: "Dag",
     theme_night: "Natt",
     ed_uptime_days: "Drifttidsperiod (dagar)",
@@ -1473,7 +1473,7 @@ const STRINGS = {
     ed_remote_entity: "Сензор Remote UI",
     ed_illustration: "Илюстриран банер",
     ed_illustration_theme: "Тема на банера",
-    theme_auto: "Автоматично",
+    theme_auto: "Автоматично (слънце или тъмна тема)",
     theme_day: "Ден",
     theme_night: "Нощ",
     ed_uptime_days: "Период на достъпност (дни)",
@@ -1576,7 +1576,7 @@ const STRINGS = {
     ed_remote_entity: "Датчик Remote UI",
     ed_illustration: "Иллюстрированный баннер",
     ed_illustration_theme: "Тема баннера",
-    theme_auto: "Автоматически",
+    theme_auto: "Автоматически (солнце или тёмная тема)",
     theme_day: "День",
     theme_night: "Ночь",
     ed_uptime_days: "Период доступности (дни)",
@@ -1679,7 +1679,7 @@ const STRINGS = {
     ed_remote_entity: "Датчик Remote UI",
     ed_illustration: "Ілюстрований банер",
     ed_illustration_theme: "Тема банера",
-    theme_auto: "Автоматично",
+    theme_auto: "Автоматично (сонце або темна тема)",
     theme_day: "День",
     theme_night: "Ніч",
     ed_uptime_days: "Період доступності (дні)",
@@ -1782,7 +1782,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI érzékelő",
     ed_illustration: "Illusztrált fejléc",
     ed_illustration_theme: "Fejléc témája",
-    theme_auto: "Automatikus",
+    theme_auto: "Automatikus (nap vagy sötét téma)",
     theme_day: "Nappal",
     theme_night: "Éjszaka",
     ed_uptime_days: "Rendelkezésre állási időszak (nap)",
@@ -1885,7 +1885,7 @@ const STRINGS = {
     ed_remote_entity: "Snímač Remote UI",
     ed_illustration: "Ilustrovaný banner",
     ed_illustration_theme: "Téma bannera",
-    theme_auto: "Automaticky",
+    theme_auto: "Automaticky (slnko alebo tmavá téma)",
     theme_day: "Deň",
     theme_night: "Noc",
     ed_uptime_days: "Obdobie dostupnosti (dni)",
@@ -1988,7 +1988,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrovaný banner",
     ed_illustration_theme: "Motiv banneru",
-    theme_auto: "Automaticky",
+    theme_auto: "Automaticky (slunce nebo tmavý motiv)",
     theme_day: "Den",
     theme_night: "Noc",
     ed_uptime_days: "Období dostupnosti (dny)",
@@ -2091,7 +2091,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrirana pasica",
     ed_illustration_theme: "Tema pasice",
-    theme_auto: "Samodejno",
+    theme_auto: "Samodejno (sonce ali temna tema)",
     theme_day: "Dan",
     theme_night: "Noč",
     ed_uptime_days: "Obdobje razpoložljivosti (dnevi)",
@@ -2194,7 +2194,7 @@ const STRINGS = {
     ed_remote_entity: "Sensors Remote UI",
     ed_illustration: "Ilustrēts baneris",
     ed_illustration_theme: "Banera motīvs",
-    theme_auto: "Automātiski",
+    theme_auto: "Automātiski (saule vai tumšā tēma)",
     theme_day: "Diena",
     theme_night: "Nakts",
     ed_uptime_days: "Pieejamības periods (dienas)",
@@ -2297,7 +2297,7 @@ const STRINGS = {
     ed_remote_entity: "Αισθητήρας Remote UI",
     ed_illustration: "Εικονογραφημένο banner",
     ed_illustration_theme: "Θέμα του banner",
-    theme_auto: "Αυτόματο",
+    theme_auto: "Αυτόματο (ήλιος ή σκούρο θέμα)",
     theme_day: "Μέρα",
     theme_night: "Νύχτα",
     ed_uptime_days: "Περίοδος διαθεσιμότητας (ημέρες)",
@@ -2321,6 +2321,14 @@ const BRANDS = { alexa: "Alexa", google: "Google Assistant" };
 
 const esc = (v) =>
   String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+// The width of an element's whole text in fractional pixels, even while it is cut with an ellipsis (0 when hidden).
+const textWidth = (el) => {
+  if (!el?.getClientRects?.().length || typeof document.createRange !== "function") return 0;
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+};
 
 const lang = (hass, config) => {
   const l = config?.language || (hass && (hass.locale?.language || hass.language)) || "en";
@@ -2650,53 +2658,60 @@ const navigate = (path) => {
 // ---------------------------------------------------------------------------
 
 // Every animation of the illustration lasts a divisor of 8 s, so a recording of 8 s loops. The scene is drawn in a
-// 200 × 80 box whose bottom edge stands on the strip.
-const STARS = [
-  [8, 10, 0.6], [30, 30, 0.5], [52, 8, 0.7], [66, 24, 0.4], [70, 6, 0.5], [104, 8, 0.6], [138, 22, 0.5], [176, 10, 0.6],
-  [194, 30, 0.5], [120, 4, 0.4], [40, 18, 0.4], [188, 2, 0.5],
-];
-// The mark on the cloud: a check (connected), three dots (connecting), a cross (cut off), a dash (signed out).
-const MARKS = {
-  ok: '<path d="M20.5 24l2.6 2.6 4.6-5"/>',
-  wait: '<path d="M20.6 24h.01M24 24h.01M27.4 24h.01"/>',
-  down: '<path d="M21.2 21.2l5.6 5.6M26.8 21.2l-5.6 5.6"/>',
-  off: '<path d="M20.8 24h6.4"/>',
-};
-const sceneSvg = (link, night) => {
-  const flow = link === "ok" ? " flow" : "";
-  const sky = night
+// 200 × 80 box whose bottom edge stands on the strip; only its right part (x 80 to 200) is shown, the sky and the
+// texts take the rest of the banner.
+const STARS = [[84, 6, 0.6], [100, 22, 0.5], [118, 4, 0.6], [138, 14, 0.5], [182, 4, 0.6], [196, 30, 0.5], [92, 40, 0.4], [126, 30, 0.4]];
+// The state colour of the link: green (connected), amber (connecting), red (cut off), grey (signed out).
+const LINK_COLORS = { ok: "#43a047", wait: "#f5b400", down: "#e5484d", off: "#9aa3ae" };
+const P_UP = "M118 58 Q126 30 148 24";
+const P_DOWN = "M176 24 Q190 30 190 54";
+// The house (left, on the ground), the cloud with its padlock (top), the phone away (right), linked by the encrypted
+// tunnel whose dots flow while connected (slower while connecting); cut off, the tunnel breaks with a red cross.
+// The pill above shows the latency. uid keeps the ids apart when several cards share a page.
+const sceneSvg = (link, night, uid, pill) => {
+  const n = night;
+  const c = LINK_COLORS[link] ?? LINK_COLORS.off;
+  const live = link === "ok" || link === "wait";
+  const sky = n
     ? `<g class="stars">${STARS.map(([x, y, r], i) => `<circle class="${i % 3 === 0 ? "tw" : ""}" cx="${x}" cy="${y}" r="${r}"/>`).join("")}</g>
-       <mask id="cc-moon"><rect width="200" height="80" fill="#fff"/><circle cx="153.5" cy="10.5" r="4.4" fill="#000"/></mask>
-       <circle cx="150" cy="13" r="8" fill="#f3eed2" opacity=".12"/>
-       <circle cx="150" cy="13" r="5" fill="#f3eed2" mask="url(#cc-moon)"/>`
-    : "";
-  return `<svg class="scene" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
+       <mask id="cc-moon-${uid}"><rect x="80" width="120" height="80" fill="#fff"/><circle cx="133.4" cy="7.6" r="3.6" fill="#000"/></mask>
+       <circle cx="130.5" cy="9.5" r="6.5" fill="#f3eed2" opacity=".12"/>
+       <circle cx="130.5" cy="9.5" r="4" fill="#f3eed2" mask="url(#cc-moon-${uid})"/>`
+    : `<g class="clouds"><path class="cloud" d="M118 11a3.6 3.6 0 0 1 .6-7.1A5 5 0 0 1 128 3.4a3.3 3.3 0 0 1-.4 7.6z"/></g>`;
+  const links = live
+    ? [P_UP, P_DOWN]
+        .map((d) => `<path class="tube" d="${d}" stroke="${c}"/><path class="dots ${link}" d="${d}" stroke="${c}"/><path class="dots core ${link}" d="${d}"/>`)
+        .join("")
+    : `<path class="cut" d="${P_UP}"/><path class="cut" d="${P_DOWN}"/>${
+        link === "down" ? '<g transform="translate(133 36)"><circle r="5.4" fill="#e5484d"/><path d="M-2.4 -2.4l4.8 4.8M2.4 -2.4l-4.8 4.8" stroke="#fff" stroke-width="1.5"/></g>' : ""
+      }`;
+  return `<svg class="scene" viewBox="80 0 120 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
     ${sky}
-    <g class="clouds">
-      <path class="cloud" d="M22 22a6 6 0 0 1 1-11.9A8.5 8.5 0 0 1 39 9a5.5 5.5 0 0 1-.6 13z"/>
-      <path class="cloud c2" d="M168 16a5 5 0 0 1 .8-9.9A7 7 0 0 1 182 5a4.5 4.5 0 0 1-.5 11z"/>
+    <path d="M80 80 C100 72 120 71 140 71.5 C160 72 180 71 200 72 H240 V80Z" fill="${n ? "#17303d" : "#86c27f"}"/>
+    <g class="house" transform="translate(104 56)">
+      <path d="M-4 1 L14 -12 L32 1Z" fill="${n ? "#3a2a2a" : "#c0603a"}"/>
+      <rect y="0" width="28" height="24" fill="${n ? "#2a3646" : "#f3e6d3"}"/>
+      <rect x="4" y="6" width="7" height="6" fill="${n ? "#ffcf6e" : "#86b9de"}"/>
+      <rect x="15" y="10" width="8" height="14" fill="#8a5a3a"/>
+      <rect x="18" y="-8" width="6" height="5" rx="1" fill="#2a3038"/>
+      <circle class="${live ? "blink" : ""}" cx="21" cy="-5.5" r=".9" fill="${c}"/>
     </g>
-    <path class="link${flow}" d="M46 60 C 62 46, 72 42, 82 46"/>
-    <path class="link${flow}" d="M128 46 C 140 42, 150 46, 158 58"/>
-    <g class="house" transform="translate(12 46)">
-      <path class="body" d="M0 14 L16 2 L32 14 V34 H0 Z"/>
-      <path class="roof" d="M-2 15 L16 1 L34 15"/>
-      <rect class="door" x="12" y="21" width="8" height="13" rx="1"/>
-      <rect class="win" x="4" y="18" width="5" height="5" rx="1"/>
-      <rect class="win" x="23" y="18" width="5" height="5" rx="1"/>
+    ${links}
+    <g class="hub" transform="translate(162 22)">
+      <path d="M-16 6a10 10 0 0 1 18-10a8 8 0 0 1 14 4a7 7 0 0 1 0 14h-30a7 7 0 0 1-2-8z" fill="${n ? "#3d475c" : "#fff"}" stroke="${c}" stroke-width="1.6"/>
+      <g transform="translate(0 6)"><rect x="-4" y="-2" width="8" height="6" rx="1" fill="${c}"/><path d="M-2.6 -2v-2a2.6 2.6 0 0 1 5.2 0v2" stroke="${c}" stroke-width="1.2" fill="none"/></g>
     </g>
-    <g class="hub" transform="translate(80 18)">
-      <path class="body" d="M10 36a11 11 0 0 1-1.4-21.9A15 15 0 0 1 38 10a10.5 10.5 0 0 1-1.1 26z"/>
-      <circle class="mark ${link}" cx="24" cy="24" r="7.5"/>
-      <g class="sign">${MARKS[link]}</g>
+    <g class="phone" transform="translate(190 68)">
+      <rect x="-6" y="-12" width="12" height="22" rx="2.4" fill="#22262b"/>
+      <rect x="-4.6" y="-10" width="9.2" height="16" rx="1" fill="${live ? (n ? "#3d5a8a" : "#86b9de") : "#3a3f48"}"/>
+      <path d="M-2 -4l2-2l2 2v4h-4z" fill="#fff" opacity="${live ? 0.9 : 0.3}"/>
     </g>
-    <g class="phone" transform="translate(160 36)">
-      <rect class="body" x="0" y="0" width="22" height="40" rx="4.5"/>
-      <rect class="screen" x="4" y="5" width="14" height="8" rx="1.5"/>
-      <rect class="line" x="4" y="16" width="14" height="3" rx="1.5"/>
-      <rect class="line" x="4" y="22" width="9" height="3" rx="1.5"/>
-      <rect class="btn" x="8" y="35" width="6" height="1.8" rx=".9"/>
-    </g>
+    ${
+      pill
+        ? `<g class="pill" transform="translate(97 16)"><rect x="-15" y="-7" width="30" height="13" rx="6.5" fill="${n ? "#2a3446" : "#fff"}" stroke="${c}"/>
+      <text y="2.4" text-anchor="middle" font-size="6.4" font-weight="700" font-family="sans-serif" fill="${c}">${esc(pill)}</text></g>`
+        : ""
+    }
   </svg>`;
 };
 
@@ -2708,7 +2723,7 @@ const STYLE = `
   :host { --cc-accent: #2f80ed; --cc-ok: var(--success-color, #43a047); --cc-warn: var(--warning-color, #ffa600);
           --cc-alert: var(--error-color, #db4437); --cc-idle: var(--secondary-text-color, #9e9e9e);
           --cc-primary: var(--primary-color, #03a9f4); display: block; }
-  ha-card { overflow: hidden; position: relative; container-type: inline-size; }
+  ha-card { overflow: hidden; position: relative; container: cc-card / inline-size; }
   /* A size container has no width of its own content: in a parent sized by its content the card would fall to a
      few pixels. This empty grid gives it a natural width of 400 px without any minimum. */
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, 400px); height: 0; }
@@ -2722,71 +2737,86 @@ const STYLE = `
   .chip .txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; }
 
-  /* ── Illustrated header ── */
-  .banner { position: relative; height: var(--banner-h, 92px); overflow: hidden; --strip-h: 12px;
+  /* ── Illustrated header: 90 px, the scene on the right standing on a 10 px network strip ── */
+  .banner { position: relative; height: 90px; overflow: hidden; --strip-h: 10px; --scene-w: min(120px, 46%);
             --sky-text: #0d2a45; --sky-muted: #3b5b78;
             background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
   .banner.night { --sky-text: #ffffff; --sky-muted: rgba(255,255,255,.78);
                   background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
-  .banner .scene { position: absolute; right: 0; bottom: var(--strip-h); height: calc(100% - var(--strip-h));
-                   width: min(calc((var(--banner-h, 92px) - var(--strip-h)) * 2.5), var(--scene-max, 58%)); overflow: hidden; }
-  .strip { position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h); background: #8f9aa6;
-           box-shadow: inset 0 1px 0 #7a8591, inset 0 -1px 0 #7a8591; }
-  .night .strip { background: #2c323b; box-shadow: inset 0 1px 0 #1f242b, inset 0 -1px 0 #1f242b; }
-  /* The packets running along the strip, stopped when the cloud is cut off. */
-  .packets { position: absolute; left: 0; right: 0; top: calc(50% - 1px); height: 2px;
-             background: repeating-linear-gradient(90deg, rgba(255,255,255,.85) 0 6px, transparent 6px 14px);
-             animation: cc-packets 1s linear infinite, cc-pulse 2s ease-in-out infinite; }
-  .night .packets { background: repeating-linear-gradient(90deg, rgba(143,186,255,.75) 0 6px, transparent 6px 14px); }
-  .banner.still .packets { animation: none; opacity: .35; }
-  .head { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--strip-h); box-sizing: border-box;
-          right: min(calc((var(--banner-h, 92px) - var(--strip-h)) * 2.5), var(--scene-max, 58%));
-          display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; min-width: 0; color: var(--sky-text); }
-  .badge { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--cc-accent);
-           background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
-  .badge.down { color: var(--cc-alert); }
-  .night .badge { background: rgba(255,255,255,.12); color: #8fbaff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
-  .night .badge.down { color: #ff8a80; }
+  .banner .scene { position: absolute; right: 0; bottom: var(--strip-h); height: calc(100% - var(--strip-h)); width: var(--scene-w); overflow: hidden; }
+  /* The network strip: cyan packets on a navy cable, running while the cloud is reached; cut off, red dashes on grey. */
+  .strip { position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h); background-color: #1e3a5f;
+           background-image: linear-gradient(90deg, #4fc3f7 0 14px, transparent 14px); background-size: 22px 2px;
+           background-repeat: repeat-x; background-position: 0 50%; box-shadow: inset 0 2px 0 #2f5a8a; }
+  .night .strip { background-color: #0f1d33; box-shadow: inset 0 2px 0 #1e3a5f; }
+  .strip.down { background-color: #5a6370; background-image: linear-gradient(90deg, #e5484d 0 6px, transparent 6px);
+                background-size: 16px 2px;
+                box-shadow: inset 0 2px 0 #77808c; }
+  .night .strip.down { background-color: #2c323b; box-shadow: inset 0 2px 0 #3a414c; }
+  .strip.ok { animation: cc-packets 1s linear infinite; } .strip.wait { animation: cc-packets 2s linear infinite; }
+  .strip.off { opacity: .75; }
+  .head { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--strip-h); right: var(--scene-w); box-sizing: border-box;
+          display: flex; align-items: center; gap: 10px; padding: 6px 8px 6px 14px; min-width: 0; color: var(--sky-text); }
+  /* The header icon: its colour is the cloud's state (blue connected, amber connecting, red cut off, grey signed out). */
+  .badge { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--c, var(--cc-idle)); }
+  .banner .badge.ok, .header .badge.ok { --c: var(--cc-accent); }
+  .banner .badge { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 22%, transparent); }
+  .night .badge { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .night .badge.ok { --c: #8fbaff; } .night .badge.warn { --c: #ffc94d; } .night .badge.alert { --c: #ff8a80; } .night .badge.idle { --c: #9aa5b1; }
   .badge .icon { width: 24px; height: 24px; }
-  .titles { flex: 1 1 0; min-width: 0; overflow: hidden; }
+  .titles { flex: 1 1 0; min-width: 0; overflow: hidden; container: cc-titles / inline-size; display: flex; flex-direction: column; align-items: flex-start; }
+  .titles > * { max-width: 100%; }
+  /* The status pill sits on the title line, right after the title, when the whole title and its whole label fit there;
+     otherwise it goes on its own line under the statistics (then kept to one line), and when even that is too tight
+     only its dot is left (the label stays in its tooltip and for screen readers). Decided by measure (see _fitPill). */
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; }
+  .trow .hst { flex: none; max-width: none; }
+  .titles .stats { align-self: stretch; }
+  .titles.pill-below .trow { display: contents; }
+  .titles.pill-below .trow .name, .titles.pill-below .trow .hst { max-width: 100%; }
+  .titles.pill-below .trow .hst { order: 3; margin-top: 3px; }
+  .titles.pill-below .stats { max-height: 16px; }
+  .titles.pill-dot .hst { padding: 5px; }
+  .titles.pill-dot .hst .txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @container cc-card (max-width: 200px) { .hst { padding: 5px; } .hst .txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
+  .hst { position: relative; }
+  /* Its colour is the header icon's. */
+  .hst.ok { --c: var(--cc-accent); }
+  .banner .hst { background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
+  .banner.night .hst { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
+  .night .hst.ok { --c: #8fbaff; } .night .hst.warn { --c: #ffc94d; } .night .hst.alert { --c: #ff8a80; } .night .hst.idle { --c: #9aa5b1; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* The statistics on two lines at most; the "·" that starts a line sits in the negative margin, clipped. */
   .stats { display: flex; flex-wrap: wrap; max-height: 32px; overflow: hidden; margin-left: -10px; font-size: 12px; line-height: 16px; color: var(--sky-muted); }
   /* A part longer than the line (a long language) ends with an ellipsis. */
   .stats span { white-space: nowrap; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
   .stats span::before { content: "·"; display: inline-block; width: 10px; text-align: center; }
-  /* Scene colours, day and night. */
-  .scene .clouds { fill: #ffffff; opacity: .92; } .night .scene .clouds { opacity: .1; }
+  /* Scene: sky details and the tunnel. */
+  .scene .clouds { fill: #ffffff; opacity: .92; }
   .scene .stars { fill: #ffffff; opacity: .85; }
-  .scene .link { fill: none; stroke: #2f80ed; stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: .8; }
-  .night .scene .link { stroke: #8fbaff; }
-  .scene .link:not(.flow) { stroke: #9aa5b1; opacity: .45; }
-  .scene .house .body { fill: #eef2f6; stroke: #5d6b7a; stroke-width: 1.6; stroke-linejoin: round; }
-  .scene .house .roof { fill: none; stroke: #4a5563; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-  .scene .house .door { fill: #b3bfcb; } .scene .house .win { fill: #ffd27a; }
-  .night .scene .house .body { fill: #2a3646; stroke: #8a97a6; } .night .scene .house .roof { stroke: #a3afbd; }
-  .night .scene .house .door { fill: #3a4759; } .night .scene .house .win { fill: #ffcf6e; }
-  .scene .hub .body { fill: #ffffff; stroke: #9fb6cf; stroke-width: 1.4; stroke-linejoin: round; }
-  .night .scene .hub .body { fill: #34465e; stroke: #6f86a3; }
-  .scene .mark.ok { fill: #43a047; } .scene .mark.wait { fill: #ffa600; } .scene .mark.down { fill: #db4437; } .scene .mark.off { fill: #9e9e9e; }
-  .scene .sign { fill: none; stroke: #ffffff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .scene .phone .body { fill: #eef2f6; stroke: #5d6b7a; stroke-width: 1.6; }
-  .scene .phone .screen { fill: #b9def8; } .scene .phone .line { fill: #c9d2db; } .scene .phone .btn { fill: #5d6b7a; }
-  .night .scene .phone .body { fill: #2a3646; stroke: #8a97a6; } .night .scene .phone .screen { fill: #8fbaff; }
-  .night .scene .phone .line { fill: #4a5a70; } .night .scene .phone .btn { fill: #8a97a6; }
+  .scene .tube { fill: none; stroke-width: 2; opacity: .55; }
+  .scene .dots { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 9; animation: cc-flow 1s linear infinite; }
+  .scene .dots.core { stroke: #ffffff; stroke-width: 2; }
+  .scene .dots.wait { animation-duration: 2s; }
+  .scene .cut { fill: none; stroke: #9aa3ae; stroke-width: 1.6; stroke-dasharray: 3 3; }
   /* ── Animations (each one a divisor of 8 s) ── */
-  .scene .link.flow { animation: cc-flow 1s linear infinite; }
   .scene .cloud { animation: cc-drift 4s ease-in-out infinite alternate; }
-  .scene .cloud.c2 { animation-delay: -2s; animation-direction: alternate-reverse; }
   .scene .stars .tw { animation: cc-twinkle 4s ease-in-out infinite; }
   .scene .stars .tw:nth-child(2n) { animation-delay: -2s; }
-  @keyframes cc-flow { to { stroke-dashoffset: -14; } }
-  @keyframes cc-drift { from { transform: translateX(0); } to { transform: translateX(8px); } }
-  @keyframes cc-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-  @keyframes cc-packets { from { background-position: 0 0; } to { background-position: 14px 0; } }
+  .scene .blink { animation: cc-twinkle 2s ease-in-out infinite; }
+  @keyframes cc-flow { to { stroke-dashoffset: -18; } }
+  @keyframes cc-drift { from { transform: translateX(0); } to { transform: translateX(6px); } }
+  @keyframes cc-packets { from { background-position: 0 50%; } to { background-position: 22px 50%; } }
   @keyframes cc-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
   @media (prefers-reduced-motion: reduce) {
-    .scene *, .packets { animation: none !important; }
+    .scene *, .strip { animation: none !important; }
+  }
+  /* The mini card's detail button sits in the top-right corner (5 + 24 px): the scene steps left of it at full size,
+     its cloud no longer under the button. The hill runs on past the scene's right edge (x 240), under the button. */
+  @container (min-width: 301px) {
+    .banner:has(> .zoom) .scene { right: 34px; overflow: visible; }
+    .banner:has(> .zoom) .head { right: calc(var(--scene-w) + 34px); }
   }
   /* A narrow card keeps the sky and the strip for its texts: no scene. */
   @container (max-width: 300px) {
@@ -2891,23 +2921,37 @@ const MINI_STYLE = `
           display: grid; place-items: center; color: var(--secondary-text-color); }
   .zoom .icon { width: 16px; height: 16px; }
   .zoom:hover { background: color-mix(in srgb, var(--cc-idle) 16%, transparent); color: var(--primary-text-color); }
+  /* Banner (illustration on): the detail button in the banner's top-right corner, as on the unfolded card. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; color: #33506b; background: rgba(255,255,255,.55);
+                  box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); }
+  .banner .zoom.on-night { color: #ffffff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner .zoom.on-night:hover { background: rgba(255,255,255,.22); }
+  /* A narrow mini card (no scene): its texts stop before the button. */
+  @container cc-card (max-width: 300px) { .banner .head { right: 34px; } }
+  .mchips { padding: 8px 12px 10px; }
 `;
 
 // The unfolded mini card: the full card, with the detail button over its banner.
 const ZOOM_STYLE = `
   .zoom { all: unset; position: absolute; z-index: 2; top: 5px; right: 5px; cursor: pointer; width: 24px; height: 24px; border-radius: 50%;
-          display: grid; place-items: center; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
+          display: grid; place-items: center; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7);
+          backdrop-filter: blur(4px); }
   .zoom:hover { background: rgba(255,255,255,.75); }
   .zoom.on-night { color: #ffffff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
   .zoom.on-night:hover { background: rgba(255,255,255,.22); }
   .zoom.plain { color: var(--secondary-text-color); background: none; box-shadow: inset 0 0 0 1px var(--divider-color, rgba(127,127,127,.3)); top: 18px; right: 12px; }
   .zoom .icon { width: 16px; height: 16px; }
   .header { position: relative; padding-right: 48px; }
+  /* A narrow card (no scene): the banner's texts stop before the button. */
+  @container cc-card (max-width: 300px) { .banner .head { right: 34px; } }
 `;
 
 // ---------------------------------------------------------------------------
 // The full card
 // ---------------------------------------------------------------------------
+
+let _ccUid = 0;
 
 const TILE_ICONS = { remote: "remote", backup: "backup", alexa: "mic", google: "mic", webhooks: "webhook", tts: "tts" };
 
@@ -2933,6 +2977,7 @@ class CloudCard extends HTMLElement {
 
   constructor() {
     super();
+    this._uid = ++_ccUid;
     this.attachShadow({ mode: "open" });
     this._html = "";
     this._data = { status: null, statusError: null, subscription: null, backups: null, exposed: null, uptime: null, latency: null };
@@ -3000,6 +3045,18 @@ class CloudCard extends HTMLElement {
   connectedCallback() {
     this._live = true;
     (this._outsideWatch ??= watchOutside(this, (ev) => this._onOutside(ev))).on();
+    // A new width (or the web font loaded): the status pill is fitted again, in the next frame.
+    if (typeof ResizeObserver === "function") {
+      this._pillResize ??= new ResizeObserver((entries) => {
+        const w = Math.round(entries.at(-1).contentRect.width);
+        if (w === this._pillWidth) return;
+        this._pillWidth = w;
+        cancelAnimationFrame(this._pillFrame);
+        this._pillFrame = requestAnimationFrame(() => this._fitPill());
+      });
+      this._pillResize.observe(this);
+    }
+    document.fonts?.ready?.then(() => this._fitPill());
     // The sources are read again on their own schedule (EVERY), the durations follow the clock: checked every 30 s.
     clearInterval(this._timer);
     this._timer = setInterval(() => {
@@ -3012,6 +3069,8 @@ class CloudCard extends HTMLElement {
 
   disconnectedCallback() {
     this._live = false;
+    this._pillResize?.disconnect();
+    this._pillWidth = null;
     this._outsideWatch?.off();
     clearInterval(this._timer);
     // Left (another view, a conditional card hidden): the popup closes without anything else.
@@ -3208,17 +3267,48 @@ class CloudCard extends HTMLElement {
       this._html = html;
       morph(this.shadowRoot, html);
     }
+    this._fitPill();
   }
 
-  // Night illustration: forced by illustration_theme, else the sun below the horizon, else the dark theme.
+  // The status pill goes on the title row, right after the title, only when the whole title and the pill's whole
+  // label fit there; otherwise it takes its own line under the subtitle (.pill-below) and the title keeps its row
+  // (cut only when it does not fit alone). The subtitle then keeps one line (its whole text in its tooltip), and when
+  // the block still runs out of the banner or into its ground strip, or the label does not fit its own line, the pill
+  // keeps its dot alone (.pill-dot, the label in its tooltip and aria-label). Measured after each render and on each
+  // new width, never by a fixed width, so that every language fits.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const chips = [...t.querySelectorAll(".hst")];
+      if (!chips[0]?.getBoundingClientRect) continue;
+      t.classList.remove("pill-below", "pill-dot");
+      const sub = t.querySelector(".stats");
+      sub?.removeAttribute("title");
+      if (!chips[0].querySelector(".txt")?.getClientRects().length) continue;
+      const avail = t.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(chips[0].parentElement).columnGap) || 0;
+      const widths = chips.map((c) => {
+        const cs = getComputedStyle(c);
+        return c.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0);
+      });
+      if (textWidth(t.querySelector(".name")) + widths.reduce((w, c) => w + gap + c, 0) <= avail + 0.01) continue;
+      t.classList.add("pill-below");
+      if (sub && (sub.scrollWidth > sub.clientWidth || sub.scrollHeight > sub.clientHeight + 1)) sub.title = [...sub.children].map((c) => c.textContent).join(" · ");
+      const banner = t.closest(".banner");
+      const box = banner?.getBoundingClientRect();
+      const floor = banner?.querySelector(".strip")?.getBoundingClientRect().top ?? box?.bottom;
+      const r = t.getBoundingClientRect();
+      const out = box && (r.top < box.top - 0.5 || r.bottom > floor + 0.5);
+      const room = avail;
+      if (out || widths.some((w) => w > room + 0.01)) t.classList.add("pill-dot");
+    }
+  }
+
+  // Night illustration: forced by illustration_theme, else when the sun is below the horizon or the theme is dark.
   _night() {
     const mode = this._config.illustration_theme;
     if (mode === "night") return true;
     if (mode === "day") return false;
-    const sun = this._hass?.states?.["sun.sun"]?.state;
-    if (sun === "below_horizon") return true;
-    if (sun === "above_horizon") return false;
-    return !!this._hass?.themes?.darkMode;
+    return this._hass?.states?.["sun.sun"]?.state === "below_horizon" || !!this._hass?.themes?.darkMode;
   }
 
   _status(m) {
@@ -3234,8 +3324,9 @@ class CloudCard extends HTMLElement {
     return this._t(r.connected ? "remote_on" : "remote_down");
   }
 
+  // The line under the title; the status itself is in the pill after the title.
   _stats(m) {
-    if (m.kind === "unknown" || m.kind === "not_set_up" || m.kind === "signed_out") return [this._status(m).text];
+    if (m.kind === "unknown" || m.kind === "not_set_up" || m.kind === "signed_out") return [];
     const parts = [this._remoteText(m)];
     if (m.latency !== null && m.latency !== undefined) parts.push(`${this._number(m.latency, 0)} ms`);
     return parts;
@@ -3249,37 +3340,55 @@ class CloudCard extends HTMLElement {
     return m.link === "ok" || m.link === "wait" ? ICONS.cloud : ICONS.cloudOff;
   }
 
-  _titleBlock(m) {
-    const down = m.link === "down" ? " down" : "";
-    return `<div class="badge ${this._status(m).cls}${down}">${svgIcon(this._badgeIcon(m))}</div>
+  // The status pill of the title line, in the colour of the header icon; its label stays in its tooltip and for
+  // screen readers when only its dot shows.
+  _statusPill(m) {
+    const st = this._status(m);
+    return `<span class="chip hst ${st.cls}" title="${esc(st.text)}"><span class="dot"></span><span class="txt">${esc(st.text)}</span></span>`;
+  }
+
+  // The header's texts: the title with the status pill right after it, then the statistics (none on the mini card).
+  _titleBlock(m, short = false) {
+    const stats = short ? [] : this._stats(m);
+    return `<div class="badge ${this._status(m).cls}" title="${esc(this._status(m).text)}">${svgIcon(this._badgeIcon(m))}</div>
       <div class="titles">
-        <div class="name">${esc(this._title())}</div>
-        <div class="stats">${this._stats(m)
-          .map((s) => `<span>${esc(s)}</span>`)
-          .join("")}</div>
+        <div class="trow"><div class="name">${esc(this._title(short))}</div>${this._statusPill(m)}</div>
+        ${stats.length ? `<div class="stats">${stats.map((s) => `<span>${esc(s)}</span>`).join("")}</div>` : ""}
       </div>`;
+  }
+
+  // The pill over the scene: the latency while connected, dots while connecting, a dash when cut off.
+  _pill(m) {
+    if (m.link === "ok") return m.latency !== null && m.latency !== undefined ? `${this._number(m.latency, 0)} ms` : "";
+    return { wait: "···", down: "—" }[m.link] ?? "";
+  }
+
+  // The banner: sky, scene and network strip, with the given texts on the left.
+  _banner(m, head, zoom = true) {
+    const night = this._night();
+    const strip = m.link === "down" ? "down" : m.link;
+    return `<div class="banner${night ? " night" : ""}${m.link === "ok" ? "" : " still"}">
+      ${sceneSvg(m.link, night, this._uid, this._pill(m))}
+      <div class="strip ${strip}"></div>
+      <div class="head">${head}</div>
+      ${zoom ? this._zoomButton(night ? "on-night" : "") : ""}
+    </div>`;
   }
 
   _header(m) {
     if (this._config.illustration === false) return `<div class="header">${this._titleBlock(m)}${this._zoomButton("plain")}</div>`;
-    const night = this._night();
-    return `<div class="banner${night ? " night" : ""}${m.link === "ok" ? "" : " still"}">
-      ${sceneSvg(m.link, night)}
-      <div class="strip"><div class="packets"></div></div>
-      <div class="head">${this._titleBlock(m)}</div>
-      ${this._zoomButton(night ? "on-night" : "")}
-    </div>`;
+    return this._banner(m, this._titleBlock(m));
   }
 
   _chips(m) {
-    const st = this._status(m);
-    const chips = [`<span class="chip ${st.cls}"><span class="dot"></span><span class="txt">${esc(st.text)}</span></span>`];
+    // The status is in the header's pill: here, the services to check and the renewal date.
+    const chips = [];
     if (m.issues) {
       const cls = m.tiles.some((x) => x.level === "alert") ? "alert" : "warn";
       chips.push(`<span class="chip ${cls}"><span class="dot"></span><span class="txt">${esc(plural(this._hass, this._config, "check", m.issues))}</span></span>`);
     }
     if (m.renewal) chips.push(`<span class="renew">${esc(this._t(m.renewal.ends ? "ends" : "renews", { date: this._date(m.renewal.date) }))}</span>`);
-    return `<div class="chips">${chips.join("")}</div>`;
+    return chips.length ? `<div class="chips">${chips.join("")}</div>` : "";
   }
 
   _indicators(m) {
@@ -3561,7 +3670,7 @@ class CloudMiniCard extends CloudCard {
   }
 
   getCardSize() {
-    return this._zoomed ? super.getCardSize() : 1;
+    return this._zoomed ? super.getCardSize() : this._config?.illustration === false ? 1 : 2;
   }
 
   getGridOptions() {
@@ -3621,6 +3730,15 @@ class CloudMiniCard extends CloudCard {
     if (this._zoomed) return super._render();
     const m = this._model();
     const st = this._status(m);
+    const chips = this._miniChips(m);
+    if (this._config.illustration !== false) {
+      // The same banner as the full card, with the short title and the status pill; the chips below it.
+      return `<style>${STYLE}${MINI_STYLE}</style>
+      <ha-card class="minib">
+        ${this._banner(m, this._titleBlock(m, true))}
+        ${chips ? `<div class="mchips"><div class="rs">${chips}</div></div>` : ""}
+      </ha-card>`;
+    }
     return `<style>${STYLE}${MINI_STYLE}</style>
       <ha-card class="minic">
         <div class="mini">
@@ -3631,7 +3749,7 @@ class CloudMiniCard extends CloudCard {
               <span class="st ${st.cls}">${esc(st.text)}</span>
               ${this._zoomButton()}
             </div>
-            <div class="rs">${this._miniChips(m)}</div>
+            <div class="rs">${chips}</div>
           </div>
         </div>
       </ha-card>`;

@@ -181,7 +181,33 @@ test("an administrator's card reads the status, subscription, backups, exposed e
     assert.ok(html.includes(s), s);
   }
   // The flow runs: check mark and moving links.
-  assert.ok(html.includes('class="mark ok"') && html.includes("link flow"));
+  assert.ok(html.includes('class="strip ok"') && html.includes('class="dots ok"') && html.includes(">18 ms</text>"));
+});
+
+test("night picture: sun below the horizon or dark theme, unless forced by illustration_theme", async () => {
+  const up = { "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } };
+  const down = { "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } };
+  const night = async (config, themes, sun) => {
+    const base = mockHass({});
+    return (await card(cc.CloudCard, config, { hass: { themes, states: { ...base.states, ...sun } } }))._night();
+  };
+  assert.equal(await night({}, { darkMode: false }, up), false);
+  assert.equal(await night({}, { darkMode: true }, up), true, "dark theme while the sun is up");
+  assert.equal(await night({}, { darkMode: false }, down), true);
+  assert.equal(await night({ illustration_theme: "day" }, { darkMode: true }, down), false);
+  assert.equal(await night({ illustration_theme: "night" }, { darkMode: false }, up), true);
+});
+
+test("night banner: the moon's mask id is unique per card; connecting: amber, slower flow", async () => {
+  const a = (await card(cc.CloudCard, { illustration_theme: "night" }))._render();
+  const b = (await card(cc.CloudCard, { illustration_theme: "night" }))._render();
+  const id = (h) => h.match(/id="(cc-moon-\d+)"/)[1];
+  assert.notEqual(id(a), id(b));
+  assert.ok(a.includes(`url(#${id(a)})`) && a.includes("banner night"));
+  const el = await card(cc.CloudCard);
+  el._data.status = { ...el._data.status, cloud: "connecting" };
+  const html = el._render();
+  assert.ok(html.includes('class="strip wait"') && html.includes('class="dots wait"') && html.includes('class="badge warn"'));
 });
 
 test("cut off: red cross, flow stopped, the remote access down for 12 minutes, no latency", async () => {
@@ -196,7 +222,7 @@ test("cut off: red cross, flow stopped, the remote access down for 12 minutes, n
   assert.equal(remote.state, "Down · 12 min");
   assert.equal(m.tiles.find((x) => x.key === "tts").level, "idle");
   const html = el._render();
-  assert.ok(html.includes('class="mark down"') && !html.includes("link flow") && html.includes("banner still"));
+  assert.ok(html.includes('class="strip down"') && !html.includes('class="dots') && html.includes("banner still"));
   assert.ok(html.includes("Disconnected") && !html.includes("Sync voice assistants"));
 });
 
@@ -276,7 +302,8 @@ test("mini card: status, latency, certificate and services to check; cut off, th
   const el = await card(cc.CloudMiniCard);
   let html = el._render();
   for (const s of ["Cloud", "Connected", "18 ms", "Cert 54 d", "1 to check", 'class="zoom']) assert.ok(html.includes(s), s);
-  assert.ok(!html.includes('class="banner'));
+  assert.ok(html.includes('class="banner') && html.includes('class="strip ok"') && html.includes(">18 ms</text>"));
+  assert.ok(!(await card(cc.CloudMiniCard, { illustration: false }))._render().includes('class="banner'));
   const down = await card(cc.CloudMiniCard, {}, { variant: "disconnected" });
   html = down._render();
   assert.ok(html.includes("Remote down · 12 min") && html.includes("Disconnected") && !html.includes(" ms<"));
@@ -293,7 +320,7 @@ test("mini card: the zoom button unfolds the full card, a click elsewhere folds 
   el._zoomed = true;
   el.disconnectedCallback();
   assert.equal(el._zoomed, false);
-  assert.equal(el.getCardSize(), 1);
+  assert.equal(el.getCardSize(), 2);
 });
 
 test("editors: a minimal YAML, the mini editor with the full card's options and its zoom", () => {

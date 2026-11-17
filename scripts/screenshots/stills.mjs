@@ -7,20 +7,20 @@ import { STILLS } from "./list.mjs";
 const FULL = 460;
 const MINI = 380;
 const shots = [
-  // Connected, day sky: the data flowing house → cloud → phone.
-  ...pair("card", { tag: "cloud-card", config: { illustration_theme: "day" } }),
+  // Connected (day sky in light, night sky in dark): the data flowing house → cloud → phone.
+  ...pair("card", { tag: "cloud-card", config: {} }),
   // The cloud cut off: red cross, the flow stopped, the remote access down.
-  ...pair("card-disconnected", { tag: "cloud-card", config: { illustration_theme: "day" }, variant: "disconnected" }),
+  ...pair("card-disconnected", { tag: "cloud-card", config: {}, variant: "disconnected" }),
   // Night sky.
   ...pair("card-night", { tag: "cloud-card", config: { illustration_theme: "night" } }),
   // The popup of a service, at the top of the card.
-  ...pair("card-detail", { tag: "cloud-card", config: { illustration_theme: "day", hide_url: true }, clicks: ['.tile[data-tile="remote"]'] }),
+  ...pair("card-detail", { tag: "cloud-card", config: { hide_url: true }, clicks: ['.tile[data-tile="remote"]'] }),
   // Without the illustration: the classic header.
   ...pair("card-classic", { tag: "cloud-card", config: { illustration: false } }),
   // The mini card, connected and cut off, and unfolded by its detail button.
   ...pair("mini-card", { tag: "cloud-mini-card", config: {}, width: MINI }),
   ...pair("mini-card-disconnected", { tag: "cloud-mini-card", config: {}, variant: "disconnected", width: MINI }),
-  ...pair("mini-card-zoom", { tag: "cloud-mini-card", config: { illustration_theme: "day" }, clicks: [".zoom"] }),
+  ...pair("mini-card-zoom", { tag: "cloud-mini-card", config: {}, clicks: [".zoom"] }),
 ];
 if (shots.length !== STILLS.length * 2 || shots.some((s) => !STILLS.includes(s.file.replace(/-dark$/, "")))) throw new Error("stills: list.mjs out of date");
 

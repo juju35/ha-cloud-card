@@ -29,7 +29,7 @@ before(async () => {
 });
 after(() => browser?.close());
 
-const TEXTS = [".name", ".stats span", ".chip", ".renew", ".lbl", ".val", ".tile", ".tname", ".tstate", ".btn", ".mtitle", ".st", ".r", ".modal"];
+const TEXTS = [".name", ".stats span", ".chip", ".hst", ".renew", ".lbl", ".val", ".tile", ".tname", ".tstate", ".btn", ".mtitle", ".st", ".r", ".modal"];
 
 const measure = async (cases) => {
   const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
@@ -75,8 +75,13 @@ const measure = async (cases) => {
         let underScene = false;
         if (head && scene && shown(scene)) {
           const sl = scene.getBoundingClientRect().left;
-          for (const n of head.querySelectorAll(".name, .stats span")) if (shown(n) && n.getBoundingClientRect().right > sl + 1) underScene = true;
+          for (const n of head.querySelectorAll(".name, .stats span, .hst")) if (shown(n) && n.getBoundingClientRect().right > sl + 1) underScene = true;
         }
+        // The status pill after the title: its whole label from 245 px, the title keeping a few characters.
+        const pill = sr.querySelector(".hst");
+        const txt = pill?.querySelector(".txt");
+        const pillLabel = pill ? txt.getBoundingClientRect().width > 1 && txt.scrollWidth <= txt.clientWidth + 0.5 : null;
+        const nameW = pill ? Math.round(sr.querySelector(".trow .name").getBoundingClientRect().width) : null;
         const badge = sr.querySelector(".badge")?.getBoundingClientRect();
         const modal = sr.querySelector(".modal")?.getBoundingClientRect();
         results.push({
@@ -86,6 +91,9 @@ const measure = async (cases) => {
           badge: badge ? [Math.round(badge.width), Math.round(badge.height)] : null,
           modalTop: modal ? Math.round(modal.top - card.top) : null,
           tiles: sr.querySelectorAll(".tile").length,
+          width: c.width,
+          pillLabel,
+          nameW,
         });
         box.remove();
       }
@@ -128,6 +136,9 @@ test("nothing leaves the card, no text under the scene, 40 px header icon, popup
     if (r.badge && (r.badge[0] !== 40 || r.badge[1] !== 40) && !r.name.includes("detail")) bad.push(`${r.name}: badge ${r.badge}`);
     if (r.modalTop !== null && r.modalTop > 20) bad.push(`${r.name}: popup ${r.modalTop}px from the top`);
     if (r.name.startsWith("cloud-card") && r.tiles !== 6) bad.push(`${r.name}: ${r.tiles} tiles`);
+    if (r.pillLabel === null) bad.push(`${r.name}: no status pill`);
+    else if (r.width >= 245 && !r.pillLabel) bad.push(`${r.name}: status pill label cut`);
+    if (r.nameW !== null && r.nameW < 30) bad.push(`${r.name}: title ${r.nameW}px`);
   }
   assert.deepEqual(bad, []);
 });
