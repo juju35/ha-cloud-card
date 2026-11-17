@@ -2650,53 +2650,60 @@ const navigate = (path) => {
 // ---------------------------------------------------------------------------
 
 // Every animation of the illustration lasts a divisor of 8 s, so a recording of 8 s loops. The scene is drawn in a
-// 200 × 80 box whose bottom edge stands on the strip.
-const STARS = [
-  [8, 10, 0.6], [30, 30, 0.5], [52, 8, 0.7], [66, 24, 0.4], [70, 6, 0.5], [104, 8, 0.6], [138, 22, 0.5], [176, 10, 0.6],
-  [194, 30, 0.5], [120, 4, 0.4], [40, 18, 0.4], [188, 2, 0.5],
-];
-// The mark on the cloud: a check (connected), three dots (connecting), a cross (cut off), a dash (signed out).
-const MARKS = {
-  ok: '<path d="M20.5 24l2.6 2.6 4.6-5"/>',
-  wait: '<path d="M20.6 24h.01M24 24h.01M27.4 24h.01"/>',
-  down: '<path d="M21.2 21.2l5.6 5.6M26.8 21.2l-5.6 5.6"/>',
-  off: '<path d="M20.8 24h6.4"/>',
-};
-const sceneSvg = (link, night) => {
-  const flow = link === "ok" ? " flow" : "";
-  const sky = night
+// 200 × 80 box whose bottom edge stands on the strip; only its right part (x 80 to 200) is shown, the sky and the
+// texts take the rest of the banner.
+const STARS = [[84, 6, 0.6], [100, 22, 0.5], [118, 4, 0.6], [138, 14, 0.5], [182, 4, 0.6], [196, 30, 0.5], [92, 40, 0.4], [126, 30, 0.4]];
+// The state colour of the link: green (connected), amber (connecting), red (cut off), grey (signed out).
+const LINK_COLORS = { ok: "#43a047", wait: "#f5b400", down: "#e5484d", off: "#9aa3ae" };
+const P_UP = "M118 58 Q126 30 148 24";
+const P_DOWN = "M176 24 Q190 30 190 54";
+// The house (left, on the ground), the cloud with its padlock (top), the phone away (right), linked by the encrypted
+// tunnel whose dots flow while connected (slower while connecting); cut off, the tunnel breaks with a red cross.
+// The pill above shows the latency. uid keeps the ids apart when several cards share a page.
+const sceneSvg = (link, night, uid, pill) => {
+  const n = night;
+  const c = LINK_COLORS[link] ?? LINK_COLORS.off;
+  const live = link === "ok" || link === "wait";
+  const sky = n
     ? `<g class="stars">${STARS.map(([x, y, r], i) => `<circle class="${i % 3 === 0 ? "tw" : ""}" cx="${x}" cy="${y}" r="${r}"/>`).join("")}</g>
-       <mask id="cc-moon"><rect width="200" height="80" fill="#fff"/><circle cx="153.5" cy="10.5" r="4.4" fill="#000"/></mask>
-       <circle cx="150" cy="13" r="8" fill="#f3eed2" opacity=".12"/>
-       <circle cx="150" cy="13" r="5" fill="#f3eed2" mask="url(#cc-moon)"/>`
-    : "";
-  return `<svg class="scene" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
+       <mask id="cc-moon-${uid}"><rect x="80" width="120" height="80" fill="#fff"/><circle cx="133.4" cy="7.6" r="3.6" fill="#000"/></mask>
+       <circle cx="130.5" cy="9.5" r="6.5" fill="#f3eed2" opacity=".12"/>
+       <circle cx="130.5" cy="9.5" r="4" fill="#f3eed2" mask="url(#cc-moon-${uid})"/>`
+    : `<g class="clouds"><path class="cloud" d="M118 11a3.6 3.6 0 0 1 .6-7.1A5 5 0 0 1 128 3.4a3.3 3.3 0 0 1-.4 7.6z"/></g>`;
+  const links = live
+    ? [P_UP, P_DOWN]
+        .map((d) => `<path class="tube" d="${d}" stroke="${c}"/><path class="dots ${link}" d="${d}" stroke="${c}"/><path class="dots core ${link}" d="${d}"/>`)
+        .join("")
+    : `<path class="cut" d="${P_UP}"/><path class="cut" d="${P_DOWN}"/>${
+        link === "down" ? '<g transform="translate(133 36)"><circle r="5.4" fill="#e5484d"/><path d="M-2.4 -2.4l4.8 4.8M2.4 -2.4l-4.8 4.8" stroke="#fff" stroke-width="1.5"/></g>' : ""
+      }`;
+  return `<svg class="scene" viewBox="80 0 120 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
     ${sky}
-    <g class="clouds">
-      <path class="cloud" d="M22 22a6 6 0 0 1 1-11.9A8.5 8.5 0 0 1 39 9a5.5 5.5 0 0 1-.6 13z"/>
-      <path class="cloud c2" d="M168 16a5 5 0 0 1 .8-9.9A7 7 0 0 1 182 5a4.5 4.5 0 0 1-.5 11z"/>
+    <path d="M80 80 C100 72 120 71 140 71.5 C160 72 180 71 200 72 V80Z" fill="${n ? "#17303d" : "#86c27f"}"/>
+    <g class="house" transform="translate(104 56)">
+      <path d="M-4 1 L14 -12 L32 1Z" fill="${n ? "#3a2a2a" : "#c0603a"}"/>
+      <rect y="0" width="28" height="24" fill="${n ? "#2a3646" : "#f3e6d3"}"/>
+      <rect x="4" y="6" width="7" height="6" fill="${n ? "#ffcf6e" : "#86b9de"}"/>
+      <rect x="15" y="10" width="8" height="14" fill="#8a5a3a"/>
+      <rect x="18" y="-8" width="6" height="5" rx="1" fill="#2a3038"/>
+      <circle class="${live ? "blink" : ""}" cx="21" cy="-5.5" r=".9" fill="${c}"/>
     </g>
-    <path class="link${flow}" d="M46 60 C 62 46, 72 42, 82 46"/>
-    <path class="link${flow}" d="M128 46 C 140 42, 150 46, 158 58"/>
-    <g class="house" transform="translate(12 46)">
-      <path class="body" d="M0 14 L16 2 L32 14 V34 H0 Z"/>
-      <path class="roof" d="M-2 15 L16 1 L34 15"/>
-      <rect class="door" x="12" y="21" width="8" height="13" rx="1"/>
-      <rect class="win" x="4" y="18" width="5" height="5" rx="1"/>
-      <rect class="win" x="23" y="18" width="5" height="5" rx="1"/>
+    ${links}
+    <g class="hub" transform="translate(162 22)">
+      <path d="M-16 6a10 10 0 0 1 18-10a8 8 0 0 1 14 4a7 7 0 0 1 0 14h-30a7 7 0 0 1-2-8z" fill="${n ? "#3d475c" : "#fff"}" stroke="${c}" stroke-width="1.6"/>
+      <g transform="translate(0 6)"><rect x="-4" y="-2" width="8" height="6" rx="1" fill="${c}"/><path d="M-2.6 -2v-2a2.6 2.6 0 0 1 5.2 0v2" stroke="${c}" stroke-width="1.2" fill="none"/></g>
     </g>
-    <g class="hub" transform="translate(80 18)">
-      <path class="body" d="M10 36a11 11 0 0 1-1.4-21.9A15 15 0 0 1 38 10a10.5 10.5 0 0 1-1.1 26z"/>
-      <circle class="mark ${link}" cx="24" cy="24" r="7.5"/>
-      <g class="sign">${MARKS[link]}</g>
+    <g class="phone" transform="translate(190 68)">
+      <rect x="-6" y="-12" width="12" height="22" rx="2.4" fill="#22262b"/>
+      <rect x="-4.6" y="-10" width="9.2" height="16" rx="1" fill="${live ? (n ? "#3d5a8a" : "#86b9de") : "#3a3f48"}"/>
+      <path d="M-2 -4l2-2l2 2v4h-4z" fill="#fff" opacity="${live ? 0.9 : 0.3}"/>
     </g>
-    <g class="phone" transform="translate(160 36)">
-      <rect class="body" x="0" y="0" width="22" height="40" rx="4.5"/>
-      <rect class="screen" x="4" y="5" width="14" height="8" rx="1.5"/>
-      <rect class="line" x="4" y="16" width="14" height="3" rx="1.5"/>
-      <rect class="line" x="4" y="22" width="9" height="3" rx="1.5"/>
-      <rect class="btn" x="8" y="35" width="6" height="1.8" rx=".9"/>
-    </g>
+    ${
+      pill
+        ? `<g class="pill" transform="translate(97 16)"><rect x="-15" y="-7" width="30" height="13" rx="6.5" fill="${n ? "#2a3446" : "#fff"}" stroke="${c}"/>
+      <text y="2.4" text-anchor="middle" font-size="6.4" font-weight="700" font-family="sans-serif" fill="${c}">${esc(pill)}</text></g>`
+        : ""
+    }
   </svg>`;
 };
 
@@ -2722,31 +2729,32 @@ const STYLE = `
   .chip .txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; }
 
-  /* ── Illustrated header ── */
-  .banner { position: relative; height: var(--banner-h, 92px); overflow: hidden; --strip-h: 12px;
+  /* ── Illustrated header: 90 px, the scene on the right standing on a 10 px network strip ── */
+  .banner { position: relative; height: 90px; overflow: hidden; --strip-h: 10px; --scene-w: min(120px, 46%);
             --sky-text: #0d2a45; --sky-muted: #3b5b78;
             background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
   .banner.night { --sky-text: #ffffff; --sky-muted: rgba(255,255,255,.78);
                   background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
-  .banner .scene { position: absolute; right: 0; bottom: var(--strip-h); height: calc(100% - var(--strip-h));
-                   width: min(calc((var(--banner-h, 92px) - var(--strip-h)) * 2.5), var(--scene-max, 58%)); overflow: hidden; }
-  .strip { position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h); background: #8f9aa6;
-           box-shadow: inset 0 1px 0 #7a8591, inset 0 -1px 0 #7a8591; }
-  .night .strip { background: #2c323b; box-shadow: inset 0 1px 0 #1f242b, inset 0 -1px 0 #1f242b; }
-  /* The packets running along the strip, stopped when the cloud is cut off. */
-  .packets { position: absolute; left: 0; right: 0; top: calc(50% - 1px); height: 2px;
-             background: repeating-linear-gradient(90deg, rgba(255,255,255,.85) 0 6px, transparent 6px 14px);
-             animation: cc-packets 1s linear infinite, cc-pulse 2s ease-in-out infinite; }
-  .night .packets { background: repeating-linear-gradient(90deg, rgba(143,186,255,.75) 0 6px, transparent 6px 14px); }
-  .banner.still .packets { animation: none; opacity: .35; }
-  .head { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--strip-h); box-sizing: border-box;
-          right: min(calc((var(--banner-h, 92px) - var(--strip-h)) * 2.5), var(--scene-max, 58%));
-          display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; min-width: 0; color: var(--sky-text); }
-  .badge { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--cc-accent);
-           background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
-  .badge.down { color: var(--cc-alert); }
-  .night .badge { background: rgba(255,255,255,.12); color: #8fbaff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
-  .night .badge.down { color: #ff8a80; }
+  .banner .scene { position: absolute; right: 0; bottom: var(--strip-h); height: calc(100% - var(--strip-h)); width: var(--scene-w); overflow: hidden; }
+  /* The network strip: cyan packets on a navy cable, running while the cloud is reached; cut off, red dashes on grey. */
+  .strip { position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h); background-color: #1e3a5f;
+           background-image: linear-gradient(90deg, #4fc3f7 0 14px, transparent 14px); background-size: 22px 2px;
+           background-repeat: repeat-x; background-position: 0 50%; box-shadow: inset 0 2px 0 #2f5a8a; }
+  .night .strip { background-color: #0f1d33; box-shadow: inset 0 2px 0 #1e3a5f; }
+  .strip.down { background-color: #5a6370; background-image: linear-gradient(90deg, #e5484d 0 6px, transparent 6px);
+                background-size: 16px 2px;
+                box-shadow: inset 0 2px 0 #77808c; }
+  .night .strip.down { background-color: #2c323b; box-shadow: inset 0 2px 0 #3a414c; }
+  .strip.ok { animation: cc-packets 1s linear infinite; } .strip.wait { animation: cc-packets 2s linear infinite; }
+  .strip.off { opacity: .75; }
+  .head { position: absolute; z-index: 1; left: 0; top: 0; bottom: var(--strip-h); right: var(--scene-w); box-sizing: border-box;
+          display: flex; align-items: center; gap: 10px; padding: 6px 8px 6px 14px; min-width: 0; color: var(--sky-text); }
+  /* The header icon: its colour is the cloud's state (blue connected, amber connecting, red cut off, grey signed out). */
+  .badge { width: 40px; height: 40px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--c, var(--cc-idle)); }
+  .banner .badge.ok, .header .badge.ok { --c: var(--cc-accent); }
+  .banner .badge { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 22%, transparent); }
+  .night .badge { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .night .badge.ok { --c: #8fbaff; } .night .badge.warn { --c: #ffc94d; } .night .badge.alert { --c: #ff8a80; } .night .badge.idle { --c: #9aa5b1; }
   .badge .icon { width: 24px; height: 24px; }
   .titles { flex: 1 1 0; min-width: 0; overflow: hidden; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -2755,38 +2763,25 @@ const STYLE = `
   /* A part longer than the line (a long language) ends with an ellipsis. */
   .stats span { white-space: nowrap; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
   .stats span::before { content: "·"; display: inline-block; width: 10px; text-align: center; }
-  /* Scene colours, day and night. */
-  .scene .clouds { fill: #ffffff; opacity: .92; } .night .scene .clouds { opacity: .1; }
+  /* Scene: sky details and the tunnel. */
+  .scene .clouds { fill: #ffffff; opacity: .92; }
   .scene .stars { fill: #ffffff; opacity: .85; }
-  .scene .link { fill: none; stroke: #2f80ed; stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: .8; }
-  .night .scene .link { stroke: #8fbaff; }
-  .scene .link:not(.flow) { stroke: #9aa5b1; opacity: .45; }
-  .scene .house .body { fill: #eef2f6; stroke: #5d6b7a; stroke-width: 1.6; stroke-linejoin: round; }
-  .scene .house .roof { fill: none; stroke: #4a5563; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-  .scene .house .door { fill: #b3bfcb; } .scene .house .win { fill: #ffd27a; }
-  .night .scene .house .body { fill: #2a3646; stroke: #8a97a6; } .night .scene .house .roof { stroke: #a3afbd; }
-  .night .scene .house .door { fill: #3a4759; } .night .scene .house .win { fill: #ffcf6e; }
-  .scene .hub .body { fill: #ffffff; stroke: #9fb6cf; stroke-width: 1.4; stroke-linejoin: round; }
-  .night .scene .hub .body { fill: #34465e; stroke: #6f86a3; }
-  .scene .mark.ok { fill: #43a047; } .scene .mark.wait { fill: #ffa600; } .scene .mark.down { fill: #db4437; } .scene .mark.off { fill: #9e9e9e; }
-  .scene .sign { fill: none; stroke: #ffffff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .scene .phone .body { fill: #eef2f6; stroke: #5d6b7a; stroke-width: 1.6; }
-  .scene .phone .screen { fill: #b9def8; } .scene .phone .line { fill: #c9d2db; } .scene .phone .btn { fill: #5d6b7a; }
-  .night .scene .phone .body { fill: #2a3646; stroke: #8a97a6; } .night .scene .phone .screen { fill: #8fbaff; }
-  .night .scene .phone .line { fill: #4a5a70; } .night .scene .phone .btn { fill: #8a97a6; }
+  .scene .tube { fill: none; stroke-width: 2; opacity: .55; }
+  .scene .dots { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 9; animation: cc-flow 1s linear infinite; }
+  .scene .dots.core { stroke: #ffffff; stroke-width: 2; }
+  .scene .dots.wait { animation-duration: 2s; }
+  .scene .cut { fill: none; stroke: #9aa3ae; stroke-width: 1.6; stroke-dasharray: 3 3; }
   /* ── Animations (each one a divisor of 8 s) ── */
-  .scene .link.flow { animation: cc-flow 1s linear infinite; }
   .scene .cloud { animation: cc-drift 4s ease-in-out infinite alternate; }
-  .scene .cloud.c2 { animation-delay: -2s; animation-direction: alternate-reverse; }
   .scene .stars .tw { animation: cc-twinkle 4s ease-in-out infinite; }
   .scene .stars .tw:nth-child(2n) { animation-delay: -2s; }
-  @keyframes cc-flow { to { stroke-dashoffset: -14; } }
-  @keyframes cc-drift { from { transform: translateX(0); } to { transform: translateX(8px); } }
-  @keyframes cc-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-  @keyframes cc-packets { from { background-position: 0 0; } to { background-position: 14px 0; } }
+  .scene .blink { animation: cc-twinkle 2s ease-in-out infinite; }
+  @keyframes cc-flow { to { stroke-dashoffset: -18; } }
+  @keyframes cc-drift { from { transform: translateX(0); } to { transform: translateX(6px); } }
+  @keyframes cc-packets { from { background-position: 0 50%; } to { background-position: 22px 50%; } }
   @keyframes cc-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
   @media (prefers-reduced-motion: reduce) {
-    .scene *, .packets { animation: none !important; }
+    .scene *, .strip { animation: none !important; }
   }
   /* A narrow card keeps the sky and the strip for its texts: no scene. */
   @container (max-width: 300px) {
@@ -2891,6 +2886,14 @@ const MINI_STYLE = `
           display: grid; place-items: center; color: var(--secondary-text-color); }
   .zoom .icon { width: 16px; height: 16px; }
   .zoom:hover { background: color-mix(in srgb, var(--cc-idle) 16%, transparent); color: var(--primary-text-color); }
+  /* Banner (illustration on): the status in its colour under the title, the detail button where the sky ends. */
+  .mst { font-size: 12px; font-weight: 500; line-height: 16px; color: var(--c); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .banner .mst.ok { color: color-mix(in srgb, var(--c) 75%, var(--sky-text)); }
+  .night .mst.ok { --c: #7fd08a; } .night .mst.warn { --c: #ffc94d; } .night .mst.alert { --c: #ff8a80; } .night .mst.idle { --c: #b5bec8; }
+  .banner .zoom { margin: 0; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); }
+  .banner .zoom.on-night { color: #ffffff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .mchips { padding: 8px 12px 10px; }
 `;
 
 // The unfolded mini card: the full card, with the detail button over its banner.
@@ -2908,6 +2911,8 @@ const ZOOM_STYLE = `
 // ---------------------------------------------------------------------------
 // The full card
 // ---------------------------------------------------------------------------
+
+let _ccUid = 0;
 
 const TILE_ICONS = { remote: "remote", backup: "backup", alexa: "mic", google: "mic", webhooks: "webhook", tts: "tts" };
 
@@ -2933,6 +2938,7 @@ class CloudCard extends HTMLElement {
 
   constructor() {
     super();
+    this._uid = ++_ccUid;
     this.attachShadow({ mode: "open" });
     this._html = "";
     this._data = { status: null, statusError: null, subscription: null, backups: null, exposed: null, uptime: null, latency: null };
@@ -3250,8 +3256,7 @@ class CloudCard extends HTMLElement {
   }
 
   _titleBlock(m) {
-    const down = m.link === "down" ? " down" : "";
-    return `<div class="badge ${this._status(m).cls}${down}">${svgIcon(this._badgeIcon(m))}</div>
+    return `<div class="badge ${this._status(m).cls}" title="${esc(this._status(m).text)}">${svgIcon(this._badgeIcon(m))}</div>
       <div class="titles">
         <div class="name">${esc(this._title())}</div>
         <div class="stats">${this._stats(m)
@@ -3260,15 +3265,27 @@ class CloudCard extends HTMLElement {
       </div>`;
   }
 
+  // The pill over the scene: the latency while connected, dots while connecting, a dash when cut off.
+  _pill(m) {
+    if (m.link === "ok") return m.latency !== null && m.latency !== undefined ? `${this._number(m.latency, 0)} ms` : "";
+    return { wait: "···", down: "—" }[m.link] ?? "";
+  }
+
+  // The banner: sky, scene and network strip, with the given texts on the left.
+  _banner(m, head, zoom = true) {
+    const night = this._night();
+    const strip = m.link === "down" ? "down" : m.link;
+    return `<div class="banner${night ? " night" : ""}${m.link === "ok" ? "" : " still"}">
+      ${sceneSvg(m.link, night, this._uid, this._pill(m))}
+      <div class="strip ${strip}"></div>
+      <div class="head">${head}</div>
+      ${zoom ? this._zoomButton(night ? "on-night" : "") : ""}
+    </div>`;
+  }
+
   _header(m) {
     if (this._config.illustration === false) return `<div class="header">${this._titleBlock(m)}${this._zoomButton("plain")}</div>`;
-    const night = this._night();
-    return `<div class="banner${night ? " night" : ""}${m.link === "ok" ? "" : " still"}">
-      ${sceneSvg(m.link, night)}
-      <div class="strip"><div class="packets"></div></div>
-      <div class="head">${this._titleBlock(m)}</div>
-      ${this._zoomButton(night ? "on-night" : "")}
-    </div>`;
+    return this._banner(m, this._titleBlock(m));
   }
 
   _chips(m) {
@@ -3561,7 +3578,7 @@ class CloudMiniCard extends CloudCard {
   }
 
   getCardSize() {
-    return this._zoomed ? super.getCardSize() : 1;
+    return this._zoomed ? super.getCardSize() : this._config?.illustration === false ? 1 : 2;
   }
 
   getGridOptions() {
@@ -3621,6 +3638,18 @@ class CloudMiniCard extends CloudCard {
     if (this._zoomed) return super._render();
     const m = this._model();
     const st = this._status(m);
+    const chips = this._miniChips(m);
+    if (this._config.illustration !== false) {
+      // The same banner as the full card, with the short title and the status; the chips below it.
+      const head = `<div class="badge ${st.cls}" title="${esc(st.text)}">${svgIcon(this._badgeIcon(m))}</div>
+        <div class="titles"><div class="name">${esc(this._title(true))}</div><div class="mst ${st.cls}">${esc(st.text)}</div></div>
+        ${this._zoomButton(this._night() ? "on-night" : "")}`;
+      return `<style>${STYLE}${MINI_STYLE}</style>
+      <ha-card class="minib">
+        ${this._banner(m, head, false)}
+        ${chips ? `<div class="mchips"><div class="rs">${chips}</div></div>` : ""}
+      </ha-card>`;
+    }
     return `<style>${STYLE}${MINI_STYLE}</style>
       <ha-card class="minic">
         <div class="mini">
@@ -3631,7 +3660,7 @@ class CloudMiniCard extends CloudCard {
               <span class="st ${st.cls}">${esc(st.text)}</span>
               ${this._zoomButton()}
             </div>
-            <div class="rs">${this._miniChips(m)}</div>
+            <div class="rs">${chips}</div>
           </div>
         </div>
       </ha-card>`;

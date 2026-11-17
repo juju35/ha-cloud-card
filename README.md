@@ -24,14 +24,14 @@ The cards read the [Home Assistant Cloud integration](https://www.home-assistant
 ## Features
 
 - Two cards: a full **Cloud Card** and a compact **Cloud Mini Card**, of type `custom:cloud-card` and `custom:cloud-mini-card`
-- The illustration is the header: sky, a house, the cloud with its status mark and a phone; dots flow along the links, clouds drift and packets run along the bottom strip. When the cloud connection drops, the check turns into a red cross, the links grey out and the flow stops
+- The illustration is the 90 px header: sky, a house linked to the cloud (its padlock in the state colour) and to a phone away by an encrypted tunnel, a latency pill above, and a 10 px network strip at the bottom. Connected, green dots flow along the tunnel and packets run along the strip; connecting, everything turns amber and slows down; disconnected, the tunnel breaks with a red cross, the phone goes dark and the strip turns grey with red dashes. The round header icon always takes the state colour (blue connected, amber connecting, red disconnected, grey signed out)
 - **Night mode** of the illustration: midnight-blue sky, stars and moon, lit windows; it follows the sun (`sun.sun`), else the dark theme of Home Assistant, or is forced with `illustration_theme`
 - Status chips: the cloud connection (**Connected**, **Connecting**, **Disconnected**, **Subscription expired**), the number of services to check, and the subscription's renewal date on the right
 - Three indicators: the **latency** of the remote access, the **availability** of the remote access over 30 days, and the **days left on the remote certificate** with a ring (amber under 14 days, red under 3)
 - Six service tiles, the size of Home Assistant's Tile card, neutral while healthy and coloured only when something needs a look: **Remote access**, **Cloud backup** (last backup stored in the cloud, its size), **Alexa** and **Google Assistant** (linked, exposed entities), **Webhooks** (cloudhooks), **Cloud TTS** (default voice)
 - Tap a tile for its details in a popup at the top of the card (remote URL, certificate, last and next backups, report state, exposed entities, voice…); it closes with its button, a click anywhere else, Escape, or when the card leaves the page
 - Tinted buttons (never filled): **Sync voice assistants** (Alexa and Google Assistant) and **Open remote URL**; `hide_url` masks the remote URL shown in the card
-- Mini card: the cloud badge (`mdi:cloud-off-outline` in red when disconnected), the status, and chips for the latency, the certificate and what needs a look (« Remote down · 12 min », « 1 to check »), with a detail button at the top right that unfolds the full card; a click anywhere outside the card folds it back
+- Mini card: the same 90 px banner with the cloud badge (`mdi:cloud-off-outline` in red when disconnected), the status and a detail button that unfolds the full card, then chips for the latency, the certificate and what needs a look (« Remote down · 12 min », « 1 to check »); a click anywhere outside the card folds it back. `illustration: false` gives the compact header without the banner
 - Works for every user: administrators get everything, other users what Home Assistant lets them read (see [Users who are not administrators](#users-who-are-not-administrators))
 - Visual editor for both cards; options left at their default are kept out of the YAML
 - Light and dark themes, `prefers-reduced-motion` honoured
@@ -140,7 +140,7 @@ zoom: true
 | `latency` | both | `true` | Measure the latency from the browser through the remote URL (see [Latency](#latency)); `false` sends no request and shows « — » |
 | `hide_url` | both | `false` | Mask the instance part of the remote URL in the card (`https://••••••••••••.ui.nabu.casa`) |
 | `services` | both | All six | **YAML only.** The service tiles and their order: `remote`, `backup`, `alexa`, `google`, `webhooks`, `tts` |
-| `zoom` | mini | `true` | Detail button at the top right: unfolds the full card and back (`false` removes it). The full card's options above apply to the unfolded view and are also set in the mini card's visual editor |
+| `zoom` | mini | `true` | Detail button (beside the title on the banner, at the top right without it): unfolds the full card and back (`false` removes it). The full card's options above apply to the unfolded view and are also set in the mini card's visual editor |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 Every option but `services` (a list) is in the visual editor.
@@ -149,7 +149,7 @@ Every option but `services` (a list) is in the visual editor.
 
 ### Animations
 
-While the cloud is connected, dots flow from the house to the cloud and on to the phone, the clouds drift and packets run along the strip, in a loop of 8 seconds. When the cloud connection drops, the check turns into a red cross and the links and the packets stop; only the clouds still drift. At night, the stars twinkle. With `prefers-reduced-motion`, everything stays still.
+While the cloud is connected, dots flow from the house to the cloud and on to the phone, the router light blinks, a cloud drifts and packets run along the strip, in a loop of 8 seconds; connecting, the flow runs at half speed. When the cloud connection drops, the tunnel breaks with a red cross and the flow and the packets stop; only the cloud still drifts. At night, the stars twinkle. With `prefers-reduced-motion`, everything stays still.
 
 Connected:
 
