@@ -2679,7 +2679,7 @@ const sceneSvg = (link, night, uid, pill) => {
       }`;
   return `<svg class="scene" viewBox="80 0 120 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
     ${sky}
-    <path d="M80 80 C100 72 120 71 140 71.5 C160 72 180 71 200 72 V80Z" fill="${n ? "#17303d" : "#86c27f"}"/>
+    <path d="M80 80 C100 72 120 71 140 71.5 C160 72 180 71 200 72 H240 V80Z" fill="${n ? "#17303d" : "#86c27f"}"/>
     <g class="house" transform="translate(104 56)">
       <path d="M-4 1 L14 -12 L32 1Z" fill="${n ? "#3a2a2a" : "#c0603a"}"/>
       <rect y="0" width="28" height="24" fill="${n ? "#2a3646" : "#f3e6d3"}"/>
@@ -2802,6 +2802,12 @@ const STYLE = `
   @keyframes cc-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
   @media (prefers-reduced-motion: reduce) {
     .scene *, .strip { animation: none !important; }
+  }
+  /* The mini card's detail button sits in the top-right corner (5 + 24 px): the scene steps left of it at full size,
+     its cloud no longer under the button. The hill runs on past the scene's right edge (x 240), under the button. */
+  @container (min-width: 301px) {
+    .banner:has(> .zoom) .scene { right: 34px; overflow: visible; }
+    .banner:has(> .zoom) .head { right: calc(var(--scene-w) + 34px); }
   }
   /* A narrow card keeps the sky and the strip for its texts: no scene. */
   @container (max-width: 300px) {

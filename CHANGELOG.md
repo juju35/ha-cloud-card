@@ -8,6 +8,7 @@
 - The round header icon always shows the state colour (blue connected, amber connecting, red disconnected, grey signed out), day and night, on the full and mini cards; SVG ids unique per card instance.
 - The banner switches to its night picture with the dark theme of Home Assistant too, even while the sun is up (`illustration_theme: auto`); `day` and `night` still force it.
 - **Status pill on the title line** of every header (banner or classic, full and mini cards): right after the title, in the header icon's colour, dropping under the statistics when the header is narrow and keeping only its dot on a very narrow card; it replaces the status chip under the header and the status text of the mini banner. The mini card's expand button sits in the banner's top-right corner, 24 px, like the collapse button of the unfolded card.
+- On a mini card wider than 300 px, the scene steps left of the corner expand / collapse button at full size (the hill running on under the button): the cloud no longer sits under it.
 
 ## 1.0.0 - 2026-11-16
 
