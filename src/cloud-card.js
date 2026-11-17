@@ -2715,7 +2715,7 @@ const STYLE = `
   :host { --cc-accent: #2f80ed; --cc-ok: var(--success-color, #43a047); --cc-warn: var(--warning-color, #ffa600);
           --cc-alert: var(--error-color, #db4437); --cc-idle: var(--secondary-text-color, #9e9e9e);
           --cc-primary: var(--primary-color, #03a9f4); display: block; }
-  ha-card { overflow: hidden; position: relative; container-type: inline-size; }
+  ha-card { overflow: hidden; position: relative; container: cc-card / inline-size; }
   /* A size container has no width of its own content: in a parent sized by its content the card would fall to a
      few pixels. This empty grid gives it a natural width of 400 px without any minimum. */
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, 400px); height: 0; }
@@ -2756,7 +2756,27 @@ const STYLE = `
   .night .badge { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .night .badge.ok { --c: #8fbaff; } .night .badge.warn { --c: #ffc94d; } .night .badge.alert { --c: #ff8a80; } .night .badge.idle { --c: #9aa5b1; }
   .badge .icon { width: 24px; height: 24px; }
-  .titles { flex: 1 1 0; min-width: 0; overflow: hidden; }
+  .titles { flex: 1 1 0; min-width: 0; overflow: hidden; container: cc-titles / inline-size; display: flex; flex-direction: column; align-items: flex-start; }
+  .titles > * { max-width: 100%; }
+  /* The status pill sits on the title line, right after the title: the title ellipsises first (never under 4
+     characters), the pill keeps its whole label. Without room for both, the pill goes on its own line under the
+     statistics; on a very narrow card only its dot is left (the label stays in its tooltip and for screen readers). */
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 4ch; }
+  .trow .hst { flex: none; max-width: calc(100% - 4ch - 8px); }
+  .titles .stats { align-self: stretch; }
+  @container cc-titles (max-width: 170px) {
+    .trow { display: contents; }
+    .trow .name, .trow .hst { max-width: 100%; }
+    .trow .hst { order: 3; margin-top: 3px; }
+  }
+  @container cc-card (max-width: 200px) { .hst { padding: 5px; } .hst .txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
+  .hst { position: relative; }
+  /* Its colour is the header icon's. */
+  .hst.ok { --c: var(--cc-accent); }
+  .banner .hst { background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
+  .banner.night .hst { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
+  .night .hst.ok { --c: #8fbaff; } .night .hst.warn { --c: #ffc94d; } .night .hst.alert { --c: #ff8a80; } .night .hst.idle { --c: #9aa5b1; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   /* The statistics on two lines at most; the "·" that starts a line sits in the negative margin, clipped. */
   .stats { display: flex; flex-wrap: wrap; max-height: 32px; overflow: hidden; margin-left: -10px; font-size: 12px; line-height: 16px; color: var(--sky-muted); }
@@ -2886,26 +2906,30 @@ const MINI_STYLE = `
           display: grid; place-items: center; color: var(--secondary-text-color); }
   .zoom .icon { width: 16px; height: 16px; }
   .zoom:hover { background: color-mix(in srgb, var(--cc-idle) 16%, transparent); color: var(--primary-text-color); }
-  /* Banner (illustration on): the status in its colour under the title, the detail button where the sky ends. */
-  .mst { font-size: 12px; font-weight: 500; line-height: 16px; color: var(--c); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .banner .mst.ok { color: color-mix(in srgb, var(--c) 75%, var(--sky-text)); }
-  .night .mst.ok { --c: #7fd08a; } .night .mst.warn { --c: #ffc94d; } .night .mst.alert { --c: #ff8a80; } .night .mst.idle { --c: #b5bec8; }
-  .banner .zoom { margin: 0; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
+  /* Banner (illustration on): the detail button in the banner's top-right corner, as on the unfolded card. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; color: #33506b; background: rgba(255,255,255,.55);
+                  box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
   .banner .zoom:hover { background: rgba(255,255,255,.75); }
   .banner .zoom.on-night { color: #ffffff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner .zoom.on-night:hover { background: rgba(255,255,255,.22); }
+  /* A narrow mini card (no scene): its texts stop before the button. */
+  @container cc-card (max-width: 300px) { .banner .head { right: 34px; } }
   .mchips { padding: 8px 12px 10px; }
 `;
 
 // The unfolded mini card: the full card, with the detail button over its banner.
 const ZOOM_STYLE = `
   .zoom { all: unset; position: absolute; z-index: 2; top: 5px; right: 5px; cursor: pointer; width: 24px; height: 24px; border-radius: 50%;
-          display: grid; place-items: center; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
+          display: grid; place-items: center; color: #33506b; background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7);
+          backdrop-filter: blur(4px); }
   .zoom:hover { background: rgba(255,255,255,.75); }
   .zoom.on-night { color: #ffffff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
   .zoom.on-night:hover { background: rgba(255,255,255,.22); }
   .zoom.plain { color: var(--secondary-text-color); background: none; box-shadow: inset 0 0 0 1px var(--divider-color, rgba(127,127,127,.3)); top: 18px; right: 12px; }
   .zoom .icon { width: 16px; height: 16px; }
   .header { position: relative; padding-right: 48px; }
+  /* A narrow card (no scene): the banner's texts stop before the button. */
+  @container cc-card (max-width: 300px) { .banner .head { right: 34px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -3237,8 +3261,9 @@ class CloudCard extends HTMLElement {
     return this._t(r.connected ? "remote_on" : "remote_down");
   }
 
+  // The line under the title; the status itself is in the pill after the title.
   _stats(m) {
-    if (m.kind === "unknown" || m.kind === "not_set_up" || m.kind === "signed_out") return [this._status(m).text];
+    if (m.kind === "unknown" || m.kind === "not_set_up" || m.kind === "signed_out") return [];
     const parts = [this._remoteText(m)];
     if (m.latency !== null && m.latency !== undefined) parts.push(`${this._number(m.latency, 0)} ms`);
     return parts;
@@ -3252,13 +3277,20 @@ class CloudCard extends HTMLElement {
     return m.link === "ok" || m.link === "wait" ? ICONS.cloud : ICONS.cloudOff;
   }
 
-  _titleBlock(m) {
+  // The status pill of the title line, in the colour of the header icon; its label stays in its tooltip and for
+  // screen readers when only its dot shows.
+  _statusPill(m) {
+    const st = this._status(m);
+    return `<span class="chip hst ${st.cls}" title="${esc(st.text)}"><span class="dot"></span><span class="txt">${esc(st.text)}</span></span>`;
+  }
+
+  // The header's texts: the title with the status pill right after it, then the statistics (none on the mini card).
+  _titleBlock(m, short = false) {
+    const stats = short ? [] : this._stats(m);
     return `<div class="badge ${this._status(m).cls}" title="${esc(this._status(m).text)}">${svgIcon(this._badgeIcon(m))}</div>
       <div class="titles">
-        <div class="name">${esc(this._title())}</div>
-        <div class="stats">${this._stats(m)
-          .map((s) => `<span>${esc(s)}</span>`)
-          .join("")}</div>
+        <div class="trow"><div class="name">${esc(this._title(short))}</div>${this._statusPill(m)}</div>
+        ${stats.length ? `<div class="stats">${stats.map((s) => `<span>${esc(s)}</span>`).join("")}</div>` : ""}
       </div>`;
   }
 
@@ -3286,14 +3318,14 @@ class CloudCard extends HTMLElement {
   }
 
   _chips(m) {
-    const st = this._status(m);
-    const chips = [`<span class="chip ${st.cls}"><span class="dot"></span><span class="txt">${esc(st.text)}</span></span>`];
+    // The status is in the header's pill: here, the services to check and the renewal date.
+    const chips = [];
     if (m.issues) {
       const cls = m.tiles.some((x) => x.level === "alert") ? "alert" : "warn";
       chips.push(`<span class="chip ${cls}"><span class="dot"></span><span class="txt">${esc(plural(this._hass, this._config, "check", m.issues))}</span></span>`);
     }
     if (m.renewal) chips.push(`<span class="renew">${esc(this._t(m.renewal.ends ? "ends" : "renews", { date: this._date(m.renewal.date) }))}</span>`);
-    return `<div class="chips">${chips.join("")}</div>`;
+    return chips.length ? `<div class="chips">${chips.join("")}</div>` : "";
   }
 
   _indicators(m) {
@@ -3637,13 +3669,10 @@ class CloudMiniCard extends CloudCard {
     const st = this._status(m);
     const chips = this._miniChips(m);
     if (this._config.illustration !== false) {
-      // The same banner as the full card, with the short title and the status; the chips below it.
-      const head = `<div class="badge ${st.cls}" title="${esc(st.text)}">${svgIcon(this._badgeIcon(m))}</div>
-        <div class="titles"><div class="name">${esc(this._title(true))}</div><div class="mst ${st.cls}">${esc(st.text)}</div></div>
-        ${this._zoomButton(this._night() ? "on-night" : "")}`;
+      // The same banner as the full card, with the short title and the status pill; the chips below it.
       return `<style>${STYLE}${MINI_STYLE}</style>
       <ha-card class="minib">
-        ${this._banner(m, head, false)}
+        ${this._banner(m, this._titleBlock(m, true))}
         ${chips ? `<div class="mchips"><div class="rs">${chips}</div></div>` : ""}
       </ha-card>`;
     }
