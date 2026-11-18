@@ -184,7 +184,7 @@ test("an administrator's card reads the status, subscription, backups, exposed e
   assert.ok(html.includes('class="strip ok"') && html.includes('class="dots ok"') && html.includes(">18 ms</text>"));
 });
 
-test("night picture: sun below the horizon or dark theme, unless forced by illustration_theme", async () => {
+test("night picture: the dark theme alone, unless forced by illustration_theme", async () => {
   const up = { "sun.sun": { entity_id: "sun.sun", state: "above_horizon", attributes: {} } };
   const down = { "sun.sun": { entity_id: "sun.sun", state: "below_horizon", attributes: {} } };
   const night = async (config, themes, sun) => {
@@ -193,7 +193,8 @@ test("night picture: sun below the horizon or dark theme, unless forced by illus
   };
   assert.equal(await night({}, { darkMode: false }, up), false);
   assert.equal(await night({}, { darkMode: true }, up), true, "dark theme while the sun is up");
-  assert.equal(await night({}, { darkMode: false }, down), true);
+  assert.equal(await night({}, { darkMode: false }, down), false, "light theme after sunset: day");
+  assert.equal(await night({}, { darkMode: true }, down), true);
   assert.equal(await night({ illustration_theme: "day" }, { darkMode: true }, down), false);
   assert.equal(await night({ illustration_theme: "night" }, { darkMode: false }, up), true);
 });

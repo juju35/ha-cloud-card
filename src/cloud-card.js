@@ -134,7 +134,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI sensor",
     ed_illustration: "Illustrated banner",
     ed_illustration_theme: "Banner theme",
-    theme_auto: "Automatic (sun or dark theme)",
+    theme_auto: "Automatic (follows the theme)",
     theme_day: "Day",
     theme_night: "Night",
     ed_uptime_days: "Uptime period (days)",
@@ -237,7 +237,7 @@ const STRINGS = {
     ed_remote_entity: "Capteur Remote UI",
     ed_illustration: "Bandeau illustré",
     ed_illustration_theme: "Thème du bandeau",
-    theme_auto: "Automatique (soleil ou thème sombre)",
+    theme_auto: "Automatique (suit le thème)",
     theme_day: "Jour",
     theme_night: "Nuit",
     ed_uptime_days: "Période de disponibilité (jours)",
@@ -340,7 +340,7 @@ const STRINGS = {
     ed_remote_entity: "Remote-UI-Sensor",
     ed_illustration: "Illustriertes Banner",
     ed_illustration_theme: "Banner-Design",
-    theme_auto: "Automatisch (Sonne oder dunkles Design)",
+    theme_auto: "Automatisch (folgt dem Design)",
     theme_day: "Tag",
     theme_night: "Nacht",
     ed_uptime_days: "Verfügbarkeitszeitraum (Tage)",
@@ -443,7 +443,7 @@ const STRINGS = {
     ed_remote_entity: "Sensor Remote UI",
     ed_illustration: "Cabecera ilustrada",
     ed_illustration_theme: "Tema de la cabecera",
-    theme_auto: "Automático (sol o tema oscuro)",
+    theme_auto: "Automático (sigue el tema)",
     theme_day: "Día",
     theme_night: "Noche",
     ed_uptime_days: "Periodo de disponibilidad (días)",
@@ -546,7 +546,7 @@ const STRINGS = {
     ed_remote_entity: "Сензор Remote UI",
     ed_illustration: "Илустровани банер",
     ed_illustration_theme: "Тема банера",
-    theme_auto: "Аутоматски (сунце или тамна тема)",
+    theme_auto: "Аутоматски (прати тему)",
     theme_day: "Дан",
     theme_night: "Ноћ",
     ed_uptime_days: "Период доступности (дани)",
@@ -649,7 +649,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrovani baner",
     ed_illustration_theme: "Tema banera",
-    theme_auto: "Automatski (sunce ili tamna tema)",
+    theme_auto: "Automatski (prati temu)",
     theme_day: "Dan",
     theme_night: "Noć",
     ed_uptime_days: "Period dostupnosti (dani)",
@@ -752,7 +752,7 @@ const STRINGS = {
     ed_remote_entity: "Sensore Remote UI",
     ed_illustration: "Intestazione illustrata",
     ed_illustration_theme: "Tema dell'intestazione",
-    theme_auto: "Automatico (sole o tema scuro)",
+    theme_auto: "Automatico (segue il tema)",
     theme_day: "Giorno",
     theme_night: "Notte",
     ed_uptime_days: "Periodo di disponibilità (giorni)",
@@ -855,7 +855,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Geïllustreerde banner",
     ed_illustration_theme: "Thema van de banner",
-    theme_auto: "Automatisch (zon of donker thema)",
+    theme_auto: "Automatisch (volgt het thema)",
     theme_day: "Dag",
     theme_night: "Nacht",
     ed_uptime_days: "Beschikbaarheidsperiode (dagen)",
@@ -958,7 +958,7 @@ const STRINGS = {
     ed_remote_entity: "Sensor Remote UI",
     ed_illustration: "Faixa ilustrada",
     ed_illustration_theme: "Tema da faixa",
-    theme_auto: "Automático (sol ou tema escuro)",
+    theme_auto: "Automático (segue o tema)",
     theme_day: "Dia",
     theme_night: "Noite",
     ed_uptime_days: "Período de disponibilidade (dias)",
@@ -1061,7 +1061,7 @@ const STRINGS = {
     ed_remote_entity: "Czujnik Remote UI",
     ed_illustration: "Ilustrowany baner",
     ed_illustration_theme: "Motyw banera",
-    theme_auto: "Automatycznie (słońce lub ciemny motyw)",
+    theme_auto: "Automatycznie (według motywu)",
     theme_day: "Dzień",
     theme_night: "Noc",
     ed_uptime_days: "Okres dostępności (dni)",
@@ -1164,7 +1164,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Banner ilustrat",
     ed_illustration_theme: "Tema bannerului",
-    theme_auto: "Automat (soare sau temă întunecată)",
+    theme_auto: "Automat (urmează tema)",
     theme_day: "Zi",
     theme_night: "Noapte",
     ed_uptime_days: "Perioada de disponibilitate (zile)",
@@ -1267,7 +1267,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Illustreret banner",
     ed_illustration_theme: "Bannertema",
-    theme_auto: "Automatisk (sol eller mørkt tema)",
+    theme_auto: "Automatisk (følger temaet)",
     theme_day: "Dag",
     theme_night: "Nat",
     ed_uptime_days: "Oppetidsperiode (dage)",
@@ -1370,7 +1370,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI-sensor",
     ed_illustration: "Illustrerad banner",
     ed_illustration_theme: "Bannerns tema",
-    theme_auto: "Automatiskt (sol eller mörkt tema)",
+    theme_auto: "Automatiskt (följer temat)",
     theme_day: "Dag",
     theme_night: "Natt",
     ed_uptime_days: "Drifttidsperiod (dagar)",
@@ -1473,7 +1473,7 @@ const STRINGS = {
     ed_remote_entity: "Сензор Remote UI",
     ed_illustration: "Илюстриран банер",
     ed_illustration_theme: "Тема на банера",
-    theme_auto: "Автоматично (слънце или тъмна тема)",
+    theme_auto: "Автоматично (следва темата)",
     theme_day: "Ден",
     theme_night: "Нощ",
     ed_uptime_days: "Период на достъпност (дни)",
@@ -1576,7 +1576,7 @@ const STRINGS = {
     ed_remote_entity: "Датчик Remote UI",
     ed_illustration: "Иллюстрированный баннер",
     ed_illustration_theme: "Тема баннера",
-    theme_auto: "Автоматически (солнце или тёмная тема)",
+    theme_auto: "Автоматически (следует теме)",
     theme_day: "День",
     theme_night: "Ночь",
     ed_uptime_days: "Период доступности (дни)",
@@ -1679,7 +1679,7 @@ const STRINGS = {
     ed_remote_entity: "Датчик Remote UI",
     ed_illustration: "Ілюстрований банер",
     ed_illustration_theme: "Тема банера",
-    theme_auto: "Автоматично (сонце або темна тема)",
+    theme_auto: "Автоматично (за темою)",
     theme_day: "День",
     theme_night: "Ніч",
     ed_uptime_days: "Період доступності (дні)",
@@ -1782,7 +1782,7 @@ const STRINGS = {
     ed_remote_entity: "Remote UI érzékelő",
     ed_illustration: "Illusztrált fejléc",
     ed_illustration_theme: "Fejléc témája",
-    theme_auto: "Automatikus (nap vagy sötét téma)",
+    theme_auto: "Automatikus (a témát követi)",
     theme_day: "Nappal",
     theme_night: "Éjszaka",
     ed_uptime_days: "Rendelkezésre állási időszak (nap)",
@@ -1885,7 +1885,7 @@ const STRINGS = {
     ed_remote_entity: "Snímač Remote UI",
     ed_illustration: "Ilustrovaný banner",
     ed_illustration_theme: "Téma bannera",
-    theme_auto: "Automaticky (slnko alebo tmavá téma)",
+    theme_auto: "Automaticky (podľa témy)",
     theme_day: "Deň",
     theme_night: "Noc",
     ed_uptime_days: "Obdobie dostupnosti (dni)",
@@ -1988,7 +1988,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrovaný banner",
     ed_illustration_theme: "Motiv banneru",
-    theme_auto: "Automaticky (slunce nebo tmavý motiv)",
+    theme_auto: "Automaticky (podle motivu)",
     theme_day: "Den",
     theme_night: "Noc",
     ed_uptime_days: "Období dostupnosti (dny)",
@@ -2091,7 +2091,7 @@ const STRINGS = {
     ed_remote_entity: "Senzor Remote UI",
     ed_illustration: "Ilustrirana pasica",
     ed_illustration_theme: "Tema pasice",
-    theme_auto: "Samodejno (sonce ali temna tema)",
+    theme_auto: "Samodejno (sledi temi)",
     theme_day: "Dan",
     theme_night: "Noč",
     ed_uptime_days: "Obdobje razpoložljivosti (dnevi)",
@@ -2194,7 +2194,7 @@ const STRINGS = {
     ed_remote_entity: "Sensors Remote UI",
     ed_illustration: "Ilustrēts baneris",
     ed_illustration_theme: "Banera motīvs",
-    theme_auto: "Automātiski (saule vai tumšā tēma)",
+    theme_auto: "Automātiski (pēc tēmas)",
     theme_day: "Diena",
     theme_night: "Nakts",
     ed_uptime_days: "Pieejamības periods (dienas)",
@@ -2297,7 +2297,7 @@ const STRINGS = {
     ed_remote_entity: "Αισθητήρας Remote UI",
     ed_illustration: "Εικονογραφημένο banner",
     ed_illustration_theme: "Θέμα του banner",
-    theme_auto: "Αυτόματο (ήλιος ή σκούρο θέμα)",
+    theme_auto: "Αυτόματο (ακολουθεί το θέμα)",
     theme_day: "Μέρα",
     theme_night: "Νύχτα",
     ed_uptime_days: "Περίοδος διαθεσιμότητας (ημέρες)",
@@ -3244,7 +3244,8 @@ class CloudCard extends HTMLElement {
 
   // ── Render ──
 
-  // What the render depends on besides the data read: language, dark mode, the sun, the entities and the minute.
+  // What the render depends on besides the data read: language, dark mode (also the night picture), the entities and
+  // the minute.
   _signature() {
     const h = this._hass;
     const e = discover(h, this._config);
@@ -3252,7 +3253,6 @@ class CloudCard extends HTMLElement {
       h.language,
       h.locale,
       h.themes?.darkMode,
-      h.states?.["sun.sun"]?.state,
       h.user?.is_admin,
       ...Object.values(e).map((id) => (id ? h.states?.[id] : undefined)),
       Math.floor(this._now() / 60000),
@@ -3303,12 +3303,12 @@ class CloudCard extends HTMLElement {
     }
   }
 
-  // Night illustration: forced by illustration_theme, else when the sun is below the horizon or the theme is dark.
+  // Night illustration: forced by illustration_theme, else the theme alone (a light theme keeps the day after sunset).
   _night() {
     const mode = this._config.illustration_theme;
     if (mode === "night") return true;
     if (mode === "day") return false;
-    return this._hass?.states?.["sun.sun"]?.state === "below_horizon" || !!this._hass?.themes?.darkMode;
+    return !!this._hass?.themes?.darkMode;
   }
 
   _status(m) {
