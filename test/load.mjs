@@ -55,6 +55,11 @@ export const load = (names) => {
       createElement: (tag) => ({ tag, content: { childNodes: [] }, addEventListener() {}, appendChild() {} }),
     },
     console: { info() {}, error() {}, log() {}, warn() {} },
+    // Animation frames: the cancelled ids are kept, so tests can check that a pending frame is cancelled.
+    cancelled: [],
+    cancelAnimationFrame(id) {
+      context.cancelled.push(id);
+    },
     CustomEvent: class {
       constructor(type, init) {
         this.type = type;

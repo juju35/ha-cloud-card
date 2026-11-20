@@ -4,6 +4,7 @@
 
 ### Fixes
 - Backup sizes: base 1024 with IEC units (KiB, MiB, GiB) and 2/1/0 decimals, like the other ha-* cards (was KB/MB/GB).
+- Leaving the page cancels a pending status pill fit (animation frame).
 
 ### Performance
 - Visual editors: the form gets new data and a new schema only when the configuration or the language changes, no longer on every state change of Home Assistant.

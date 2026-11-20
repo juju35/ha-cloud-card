@@ -3071,6 +3071,8 @@ class CloudCard extends HTMLElement {
     this._live = false;
     this._pillResize?.disconnect();
     this._pillWidth = null;
+    if (this._pillFrame) cancelAnimationFrame(this._pillFrame);
+    this._pillFrame = null;
     this._outsideWatch?.off();
     clearInterval(this._timer);
     // Left (another view, a conditional card hidden): the popup closes without anything else.

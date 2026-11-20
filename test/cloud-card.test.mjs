@@ -6,6 +6,7 @@ import { load } from "./load.mjs";
 
 const cc = load([
   "ICONS",
+  "cancelled",
   "STRINGS",
   "discover",
   "certDays",
@@ -368,4 +369,12 @@ test("sizes use base 1024 IEC units with 2/1/0 decimals", async () => {
     [512, 2048, 15.5 * 1024 ** 2, 300 * 1024 ** 2, 1.5 * 1024 ** 3].map((b) => plain(el._size(b))),
     ["512 B", "2.00 KiB", "15.5 MiB", "300 MiB", "1.50 GiB"],
   );
+});
+
+test("leaving the page cancels the pending status pill frame", async () => {
+  const el = await card(cc.CloudCard, {});
+  el._pillFrame = 42;
+  el.disconnectedCallback();
+  assert.ok(cc.cancelled.includes(42));
+  assert.equal(el._pillFrame, null);
 });
