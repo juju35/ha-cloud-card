@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.2 - 2026-11-20
+
+### Performance
+- Visual editors: the form gets new data and a new schema only when the configuration or the language changes, no longer on every state change of Home Assistant.
+
+### Maintenance
+- Release: the HACS validation is a prerequisite of a release again (it was left out until the first release existed).
+- Tests: the coverage report now measures the card source itself.
+- README: the mini card's detail button is in the banner's top-right corner.
+
 ## 1.1.1 - 2026-11-18
 
 ### Fixes

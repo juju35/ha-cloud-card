@@ -1,6 +1,6 @@
 {
   "name": "ha-cloud-card",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Home Assistant Cloud (Nabu Casa) and remote access cards for Home Assistant, under an animated illustrated banner.",
   "repository": {
     "type": "git",
