@@ -55,6 +55,11 @@ export const load = (names) => {
       createElement: (tag) => ({ tag, content: { childNodes: [] }, addEventListener() {}, appendChild() {} }),
     },
     console: { info() {}, error() {}, log() {}, warn() {} },
+    // Animation frames: the cancelled ids are kept, so tests can check that a pending frame is cancelled.
+    cancelled: [],
+    cancelAnimationFrame(id) {
+      context.cancelled.push(id);
+    },
     CustomEvent: class {
       constructor(type, init) {
         this.type = type;
@@ -70,5 +75,6 @@ export const load = (names) => {
     Date,
   };
   vm.createContext(context);
-  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context);
+  // The file name lets `node --test --experimental-test-coverage` report the card source itself, not only the tests.
+  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context, { filename: new URL("../src/cloud-card.js", import.meta.url).pathname });
 };

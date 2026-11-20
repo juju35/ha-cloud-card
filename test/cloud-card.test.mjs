@@ -6,6 +6,7 @@ import { load } from "./load.mjs";
 
 const cc = load([
   "ICONS",
+  "cancelled",
   "STRINGS",
   "discover",
   "certDays",
@@ -169,7 +170,7 @@ test("an administrator's card reads the status, subscription, backups, exposed e
   const tiles = Object.fromEntries(m.tiles.map((x) => [x.key, `${x.level} ${x.state}`]));
   assert.deepEqual(plain(tiles), {
     remote: "ok Connected",
-    backup: "ok Today 03:12 · 1.4 GB",
+    backup: "ok Today 03:12 · 1.40 GiB",
     alexa: "ok Linked · 38 entities",
     google: "warn Not linked",
     webhooks: "ok 4 active",
@@ -233,7 +234,7 @@ test("a user who is not an administrator: no admin-only command, the backup from
   const m = el._model();
   assert.equal(m.renewal, null);
   const tiles = Object.fromEntries(m.tiles.map((x) => [x.key, x.state]));
-  assert.equal(tiles.backup, "Today 03:12 · 1.4 GB");
+  assert.equal(tiles.backup, "Today 03:12 · 1.40 GiB");
   assert.equal(tiles.alexa, "Linked");
   const html = el._render();
   assert.ok(!html.includes("Sync voice assistants") && html.includes("Open remote URL"));
@@ -345,4 +346,35 @@ test("the card answers in the user's language", async () => {
   const el = await card(cc.CloudCard, { language: "fr" });
   const html = el._render();
   assert.ok(html.includes("Connecté") && html.includes("Accès distant") && html.includes("Latence"));
+});
+
+test("editor: a new hass does not hand the form a new schema or new data", () => {
+  const ed = new cc.CloudCardEditor();
+  ed.setConfig({ latency: false });
+  ed.hass = { language: "en", states: {} };
+  const { schema, data } = ed._form;
+  assert.equal(data.latency, false);
+  ed.hass = { language: "en", states: { "sun.sun": {} } };
+  assert.equal(ed._form.schema, schema);
+  assert.equal(ed._form.data, data);
+  ed.hass = { language: "fr", states: {} };
+  assert.notEqual(ed._form.schema, schema);
+  ed.setConfig({ latency: true });
+  assert.notEqual(ed._form.data, data);
+});
+
+test("sizes use base 1024 IEC units with 2/1/0 decimals", async () => {
+  const el = await card(cc.CloudCard, {});
+  assert.deepEqual(
+    [512, 2048, 15.5 * 1024 ** 2, 300 * 1024 ** 2, 1.5 * 1024 ** 3].map((b) => plain(el._size(b))),
+    ["512 B", "2.00 KiB", "15.5 MiB", "300 MiB", "1.50 GiB"],
+  );
+});
+
+test("leaving the page cancels the pending status pill frame", async () => {
+  const el = await card(cc.CloudCard, {});
+  el._pillFrame = 42;
+  el.disconnectedCallback();
+  assert.ok(cc.cancelled.includes(42));
+  assert.equal(el._pillFrame, null);
 });

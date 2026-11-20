@@ -140,7 +140,7 @@ zoom: true
 | `latency` | both | `true` | Measure the latency from the browser through the remote URL (see [Latency](#latency)); `false` sends no request and shows « — » |
 | `hide_url` | both | `false` | Mask the instance part of the remote URL in the card (`https://••••••••••••.ui.nabu.casa`) |
 | `services` | both | All six | **YAML only.** The service tiles and their order: `remote`, `backup`, `alexa`, `google`, `webhooks`, `tts` |
-| `zoom` | mini | `true` | Detail button (beside the title on the banner, at the top right without it): unfolds the full card and back (`false` removes it). The full card's options above apply to the unfolded view and are also set in the mini card's visual editor |
+| `zoom` | mini | `true` | Detail button (in the banner's top-right corner; at the right of the title row without the illustration): unfolds the full card and back (`false` removes it). The full card's options above apply to the unfolded view and are also set in the mini card's visual editor |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 Every option but `services` (a list) is in the visual editor.

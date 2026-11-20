@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.2 - 2026-11-20
+
+### Fixes
+- Backup sizes: base 1024 with IEC units (KiB, MiB, GiB) and 2/1/0 decimals, like the other ha-* cards (was KB/MB/GB).
+- Leaving the page cancels a pending status pill fit (animation frame).
+
+### Performance
+- Visual editors: the form gets new data and a new schema only when the configuration or the language changes, no longer on every state change of Home Assistant.
+
+### Maintenance
+- Release: the HACS validation is a prerequisite of a release again (it was left out until the first release existed).
+- Tests: the coverage report now measures the card source itself.
+- README: the mini card's detail button is in the banner's top-right corner.
+
 ## 1.1.1 - 2026-11-18
 
 ### Fixes
