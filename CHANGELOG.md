@@ -2,6 +2,9 @@
 
 ## 1.1.2 - 2026-11-20
 
+### Fixes
+- Backup sizes: base 1024 with IEC units (KiB, MiB, GiB) and 2/1/0 decimals, like the other ha-* cards (was KB/MB/GB).
+
 ### Performance
 - Visual editors: the form gets new data and a new schema only when the configuration or the language changes, no longer on every state change of Home Assistant.
 

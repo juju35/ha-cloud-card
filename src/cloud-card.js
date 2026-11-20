@@ -3202,16 +3202,17 @@ class CloudCard extends HTMLElement {
     }
   }
 
-  // A size in bytes, base 1024 as in Home Assistant's backup settings.
+  // A size in bytes, base 1024 with IEC units (ha-* convention):
+  // 2 decimals under 10, 1 under 100, none above ("1.46 GiB", "48.9 MiB", "512 KiB").
   _size(bytes) {
-    const units = ["B", "KB", "MB", "GB", "TB"];
-    let v = bytes;
+    const units = ["B", "KiB", "MiB", "GiB", "TiB"];
+    let v = Math.max(0, bytes);
     let i = 0;
     while (v >= 1024 && i < units.length - 1) {
       v /= 1024;
       i++;
     }
-    return `${this._number(v, i && v < 10 ? 1 : 0)} ${units[i]}`;
+    return `${this._number(v, i === 0 || v >= 100 ? 0 : v >= 10 ? 1 : 2)} ${units[i]}`;
   }
 
   _duration(ms) {
