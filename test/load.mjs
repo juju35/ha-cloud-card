@@ -70,5 +70,6 @@ export const load = (names) => {
     Date,
   };
   vm.createContext(context);
-  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context);
+  // The file name lets `node --test --experimental-test-coverage` report the card source itself, not only the tests.
+  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context, { filename: new URL("../src/cloud-card.js", import.meta.url).pathname });
 };
