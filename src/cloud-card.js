@@ -3843,12 +3843,21 @@ class CloudCardEditor extends HTMLElement {
       });
       this.appendChild(this._form);
     }
-    const data = { illustration_theme: "auto", uptime_days: 30, ...this._config };
-    for (const k of ON_BY_DEFAULT) if (data[k] === undefined) data[k] = true;
-    for (const k of OFF_BY_DEFAULT) if (data[k] === undefined) data[k] = false;
     this._form.hass = this._hass;
-    this._form.data = data;
-    this._form.schema = this._schema();
+    // Home Assistant sets hass on every state change: the form gets new data and a new schema only when the
+    // configuration or the language changed, not a fresh redraw each time.
+    if (this._formConfig !== this._config) {
+      this._formConfig = this._config;
+      const data = { illustration_theme: "auto", uptime_days: 30, ...this._config };
+      for (const k of ON_BY_DEFAULT) if (data[k] === undefined) data[k] = true;
+      for (const k of OFF_BY_DEFAULT) if (data[k] === undefined) data[k] = false;
+      this._form.data = data;
+    }
+    const l = lang(this._hass, this._config);
+    if (this._schemaLang !== l || !this._form.schema) {
+      this._schemaLang = l;
+      this._form.schema = this._schema();
+    }
   }
 }
 

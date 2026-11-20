@@ -346,3 +346,18 @@ test("the card answers in the user's language", async () => {
   const html = el._render();
   assert.ok(html.includes("Connecté") && html.includes("Accès distant") && html.includes("Latence"));
 });
+
+test("editor: a new hass does not hand the form a new schema or new data", () => {
+  const ed = new cc.CloudCardEditor();
+  ed.setConfig({ latency: false });
+  ed.hass = { language: "en", states: {} };
+  const { schema, data } = ed._form;
+  assert.equal(data.latency, false);
+  ed.hass = { language: "en", states: { "sun.sun": {} } };
+  assert.equal(ed._form.schema, schema);
+  assert.equal(ed._form.data, data);
+  ed.hass = { language: "fr", states: {} };
+  assert.notEqual(ed._form.schema, schema);
+  ed.setConfig({ latency: true });
+  assert.notEqual(ed._form.data, data);
+});
