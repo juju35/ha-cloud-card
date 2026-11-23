@@ -42,7 +42,7 @@ The cards read the [Home Assistant Cloud integration](https://www.home-assistant
 
 | Integration | What the cards show |
 |---|---|
-| [Home Assistant Cloud](https://www.home-assistant.io/integrations/cloud/) (built in) | The cloud status (connection, remote access, remote domain and certificate, Alexa and Google Assistant preferences, cloudhooks, default voice), the subscription, the history of its **Remote UI** binary sensor, and the cloud backups of the [Backup](https://www.home-assistant.io/integrations/backup/) integration |
+| <img src="https://raw.githubusercontent.com/juju35/ha-cloud-card/main/images/home_assistant.png" alt="" width="16"> [Home Assistant Cloud](https://www.home-assistant.io/integrations/cloud/) (built in) | The cloud status (connection, remote access, remote domain and certificate, Alexa and Google Assistant preferences, cloudhooks, default voice), the subscription, the history of its **Remote UI** binary sensor, and the cloud backups of the [Backup](https://www.home-assistant.io/integrations/backup/) integration |
 
 ## Prerequisites
 
