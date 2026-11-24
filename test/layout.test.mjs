@@ -4,11 +4,11 @@
 // icon keeps its 40 px, and the service popup opens at the top of the card.
 // Skipped when Playwright or Chromium is not installed, except in CI, where it must run.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { after, before, test } from "node:test";
 import { LATENCY, mockHass, NOW } from "../scripts/screenshots/mock.mjs";
+import { source } from "./source.mjs";
 
-const src = readFileSync(new URL("../src/cloud-card.js", import.meta.url), "utf8");
+const src = source;
 const THEMES = {
   light: { "--card-background-color": "#fff", "--secondary-background-color": "#f1f1f1", "--primary-text-color": "#212121", "--secondary-text-color": "#727272" },
   dark: { "--card-background-color": "#1c1c1c", "--secondary-background-color": "#282828", "--primary-text-color": "#e1e1e1", "--secondary-text-color": "#9b9b9b" },

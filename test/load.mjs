@@ -1,10 +1,10 @@
 // Test loader: evaluates the card source (a plain script, as shipped in dist/) in an isolated context
 // with minimal browser stubs, and returns the requested top-level bindings. The bundle is unchanged.
-import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { source } from "./source.mjs";
 
 export const load = (names) => {
-  const src = readFileSync(new URL("../src/cloud-card.js", import.meta.url), "utf8");
+  const src = source;
   class HTMLElement {
     attachShadow() {
       // Listeners kept by type, so tests can dispatch events to them; no DOM (the render is read as HTML).
@@ -76,5 +76,5 @@ export const load = (names) => {
   };
   vm.createContext(context);
   // The file name lets `node --test --experimental-test-coverage` report the card source itself, not only the tests.
-  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context, { filename: new URL("../src/cloud-card.js", import.meta.url).pathname });
+  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context, { filename: new URL("../src/index.js", import.meta.url).pathname });
 };
